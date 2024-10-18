@@ -2,7 +2,6 @@ return {
   "stevearc/oil.nvim",
   dependencies = { { "echasnovski/mini.icons", opts = {} } },
   keys = {
-    { "<leader>=", "<cmd>Oil<cr>", mode = "n", desc = "Open Filesystem" },
     { "<leader>-", "<cmd>Oil --float<cr>", mode = "n", desc = "Open Floating Filesystem" },
   },
   opts = {
@@ -13,6 +12,11 @@ return {
     float = {
       padding = 10,
       preview_split = "right",
+    },
+    keymaps = {
+      ["h"] = "actions.parent",
+      ["l"] = "actions.select",
+      ["q"] = "actions.close",
     },
   },
 }
