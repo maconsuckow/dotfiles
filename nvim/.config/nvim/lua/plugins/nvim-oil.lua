@@ -1,6 +1,7 @@
 return {
   "stevearc/oil.nvim",
   dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  enabled = false,
   keys = {
     { "<leader>-", "<cmd>Oil --float<cr>", mode = "n", desc = "Open Floating Filesystem" },
   },
