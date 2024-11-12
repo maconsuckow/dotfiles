@@ -1,6 +1,7 @@
 return {
   "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
+  enabled = true,
   lazy = true,
   keys = {
     { "<leader>o", "<cmd>ObsidianToday<cr>", "Open Obsidian" },

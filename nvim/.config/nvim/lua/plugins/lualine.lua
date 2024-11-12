@@ -1,11 +1,9 @@
-local icons = LazyVim.config.icons
-
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "yavorski/lualine-macro-recording.nvim" },
   opts = {
     options = {
-      theme = "catppuccin",
+      theme = "nordfox",
       section_separators = { right = "", left = "" },
       disabled_filetypes = { statusline = { "dashboard", "Neo-tree" } },
     },

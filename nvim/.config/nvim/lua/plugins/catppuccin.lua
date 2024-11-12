@@ -2,6 +2,7 @@ return {
   {
     "catppuccin/nvim",
     lazy = true,
+    enabled = false,
     priority = 1000,
     opts = {
       flavour = "frappe",

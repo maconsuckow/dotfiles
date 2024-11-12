@@ -4,9 +4,8 @@ return {
     opts = function(_, opts)
       local cmp = require("cmp")
 
-      opts.completion.autocomplete = false
       opts.mapping = cmp.mapping.preset.insert({
-        ["<CR>"] = nil,
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<C-n>"] = cmp.mapping.select_next_item({
           behavior = cmp.SelectBehavior.Insert,
         }),
