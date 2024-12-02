@@ -54,20 +54,6 @@ local media_title = sbar.add("item", {
 	},
 })
 
-local media_bracket = sbar.add("bracket", "media.bracket", {
-	media_cover.name,
-	media_artist.name,
-	media_title.name,
-}, {
-	background = {
-		padding_left = 10,
-		color = colors.transparent,
-		border_color = colors.grey,
-		border_width = 1,
-	},
-	popup = { align = "center" },
-})
-
 sbar.add("item", {
 	position = "popup." .. media_cover.name,
 	icon = { string = icons.media.back },
@@ -113,7 +99,11 @@ end
 media_cover:subscribe("media_change", function(env)
 	if whitelist[env.INFO.app] then
 		local drawing = (env.INFO.state == "playing")
-		media_artist:set({ drawing = drawing, label = env.INFO.artist })
+		if env.INFO.artist ~= "" then
+			media_artist:set({ drawing = drawing, label = env.INFO.artist })
+		else
+			media_artist:set({ drawing = drawing, label = env.INFO.album })
+		end
 		media_title:set({ drawing = drawing, label = env.INFO.title })
 		media_cover:set({ drawing = drawing })
 
