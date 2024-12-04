@@ -121,7 +121,7 @@ run = ['layout tiling', 'move-node-to-workspace 8']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Slack'
-run = ['layout tiling', 'move-node-to-workspace 4']
+run = ['layout floating', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Outlook'
