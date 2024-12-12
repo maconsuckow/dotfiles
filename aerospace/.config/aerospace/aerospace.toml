@@ -76,7 +76,7 @@ inner.horizontal = 8
 inner.vertical =   8
 outer.left =       8
 outer.bottom =     8
-outer.top =        [{ monitor.main = 28 }, 8]
+outer.top =        [{ monitor.main = 8 }, 8]
 outer.right =      8
 
 # 1 = Terminal (Kitty)
