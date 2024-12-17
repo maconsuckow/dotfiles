@@ -57,7 +57,7 @@ key-mapping.preset = 'qwerty'
 # Drop it from your config, if you don't like this behavior
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+# on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 # Mouse lazily follows focused monitor (default in i3)
 # on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -76,7 +76,7 @@ inner.horizontal = 8
 inner.vertical =   8
 outer.left =       8
 outer.bottom =     8
-outer.top =        [{ monitor.main = 8 }, 8]
+outer.top =        [{ monitor.main = 16 }, 8]
 outer.right =      8
 
 # 1 = Terminal (Kitty)
@@ -94,10 +94,10 @@ outer.right =      8
 5 = 'built-in'
 7 = 'built-in'
 9 = 'built-in'
-1 = 'S24D300 \(2\)'
-2 = 'S24D300 \(2\)'
-6 = ['S24D300 \(1\)', 'MNN']
-3 = ['S24D300 \(1\)', 'MNN']
+1 = 'S24D300 \(1\)'
+2 = 'S24D300 \(1\)'
+6 = ['S24D300 \(2\)', 'MNN']
+3 = ['S24D300 \(2\)', 'MNN']
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'

@@ -35,5 +35,9 @@ return {
 		},
 		show_hidden = true,
 		show_symlink = true,
+		integrations = {
+			grep_in_selected_files = "fzf-lua",
+			grep_in_directory = "fzf-lua",
+		},
 	},
 }

@@ -1,20 +1,60 @@
+-- local palette = require("kanagawa.colors").palette
+-- local kanagawa_themes = require("kanagawa.themes")
+-- local dragon = kanagawa_themes.dragon(palette)
+--
+local custom_kanagawa = {}
+custom_kanagawa.normal = {
+	a = { bg = "#8ba4b0", fg = "#0d0c0c" },
+	b = { bg = "#252535", fg = "#8ba4b0" },
+	c = { bg = "NONE", fg = "#c5c9c5" },
+}
+
+custom_kanagawa.insert = {
+	a = { bg = "#98BB6C", fg = "#181616" },
+	b = { bg = "#181616", fg = "#98BB6C" },
+}
+
+custom_kanagawa.command = {
+	a = { bg = "#c4746e", fg = "#181616" },
+	b = { bg = "#181616", fg = "#c4746e" },
+}
+
+custom_kanagawa.visual = {
+	a = { bg = "#c4746e", fg = "#181616" },
+	b = { bg = "#181616", fg = "#8992a7" },
+}
+
+custom_kanagawa.replace = {
+	a = { bg = "#b6927b", fg = "#181616" },
+	b = { bg = "#181616", fg = "#b6927b" },
+}
+
+custom_kanagawa.inactive = {
+	a = { bg = "#0d0c0c", fg = "#C8C093" },
+	b = { bg = "#0d0c0c", fg = "#C8C093", gui = "bold" },
+	c = { bg = "#0d0c0c", fg = "#C8C093" },
+}
+
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "yavorski/lualine-macro-recording.nvim" },
 	opts = {
 		options = {
-			section_separators = { right = "", left = "" },
-			disabled_filetypes = { statusline = { "dashboard", "Neo-tree" } },
+			theme = custom_kanagawa,
+			component_separators = { right = "--", left = "--" },
+			section_separators = { right = "", left = "" },
+			disabled_filetypes = { statusline = { "dashboard", "Neo-tree", "Lazy", "LazyVim" } },
 		},
 		sections = {
 			lualine_a = {
 				{ "mode", separator = { left = "", right = "" }, right_padding = 2 },
 			},
 			lualine_b = {
+				-- { "branch" },
 				{ "branch", separator = { right = "" } },
 				{
 					"diff",
-					separator = { left = "", right = "" },
+					separator = { right = "" },
 					symbols = { added = "+", modified = "~", removed = "-" },
 				},
 				-- {

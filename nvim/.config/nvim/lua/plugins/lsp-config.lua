@@ -3,7 +3,16 @@ return {
 	opts = {
 		diagnostics = {
 			float = {
-				border = "rounded",
+				border = {
+					{ "󱐋", "WarningMsg" },
+					{ "─", "Comment" },
+					{ "╮", "Comment" },
+					{ "│", "Comment" },
+					{ "╯", "Comment" },
+					{ "─", "Comment" },
+					{ "╰", "Comment" },
+					{ "│", "Comment" },
+				},
 			},
 		},
 		servers = {
