@@ -11,7 +11,7 @@ custom_kanagawa.normal = {
 
 custom_kanagawa.insert = {
 	a = { bg = "#98BB6C", fg = "#181616" },
-	b = { bg = "#181616", fg = "#98BB6C" },
+	b = { bg = "#252535", fg = "#98BB6C" },
 }
 
 custom_kanagawa.command = {
@@ -21,7 +21,7 @@ custom_kanagawa.command = {
 
 custom_kanagawa.visual = {
 	a = { bg = "#c4746e", fg = "#181616" },
-	b = { bg = "#181616", fg = "#8992a7" },
+	b = { bg = "#252535", fg = "#c4746e" },
 }
 
 custom_kanagawa.replace = {
