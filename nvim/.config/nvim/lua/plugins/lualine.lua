@@ -16,7 +16,7 @@ custom_kanagawa.insert = {
 
 custom_kanagawa.command = {
 	a = { bg = "#c4746e", fg = "#181616" },
-	b = { bg = "#181616", fg = "#c4746e" },
+	b = { bg = "#252535", fg = "#c4746e" },
 }
 
 custom_kanagawa.visual = {
