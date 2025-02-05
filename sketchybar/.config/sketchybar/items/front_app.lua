@@ -1,4 +1,3 @@
-local colors = require("colors")
 local icons = require("icons")
 local icon_map = require("icon_map")
 
@@ -21,6 +20,16 @@ front_app:subscribe({ "front_app_switched" }, function(env)
 			style = "Regular",
 		},
 	}
+
+	if env.INFO == "Activity Monitor" then
+		icon = {
+			string = icon_map["Activity Monitor"],
+			font = {
+				family = "sketchybar-app-font",
+				style = "Regular",
+			},
+		}
+	end
 
 	if env.INFO == "Chrome" then
 		icon = {

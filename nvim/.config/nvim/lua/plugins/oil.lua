@@ -20,7 +20,7 @@ return {
 		},
 		keys = {
 			{
-				"<leader>e",
+				"<leader>m",
 				"<cmd>Oil --float<cr>",
 				desc = "Open parent directory",
 			},

@@ -16,35 +16,45 @@ return {
 			lazygit = {
 				configure = true,
 			},
+			indent = {
+				chunk = { enabled = true },
+			},
+			git = { enabled = true },
+			explorer = {
+				replace_netrw = true,
+			},
+			picker = {
+				sources = {
+					explorer = {
+						finder = "explorer",
+						auto_close = true,
+						hidden = true,
+						-- layout = { preset = "vscode", preview = true },
+						layout = { preset = "vertical" },
+					},
+				},
+			},
+			styles = {
+				wo = {
+					wrap = true,
+				},
+			},
 			scroll = {
 				animate = { duration = { total = 100 } },
 			},
-			statuscolumn = {},
 			dashboard = {
 				enable = true,
 				sections = {
 					{ section = "header" },
 					{ section = "keys", gap = 1, padding = 1 },
 					{ section = "startup" },
-					-- {
-					-- 	pane = 2,
-					-- 	{ height = 10 },
-					-- 	{
-					-- 		icon = " ",
-					-- 		title = "Recent Files",
-					-- 		section = "recent_files",
-					-- 		indent = 2,
-					-- 		padding = 1,
-					-- 	},
-					-- 	{ icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-					-- },
 				},
 				preset = {
 					header = [[
 ███████╗ ██████╗ ██╗     ██╗██████╗ ██████╗  ██████╗  ██████╗██╗  ██╗
 ██╔════╝██╔═══██╗██║     ██║██╔══██╗██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝
-███████╗██║   ██║██║     ██║██║  ██║██████╔╝██║   ██║██║     █████╔╝ 
-╚════██║██║   ██║██║     ██║██║  ██║██╔══██╗██║   ██║██║     ██╔═██╗ 
+███████╗██║   ██║██║     ██║██║  ██║██████╔╝██║   ██║██║     █████╔╝
+╚════██║██║   ██║██║     ██║██║  ██║██╔══██╗██║   ██║██║     ██╔═██╗
 ███████║╚██████╔╝███████╗██║██████╔╝██║  ██║╚██████╔╝╚██████╗██║  ██╗
 ╚══════╝ ╚═════╝ ╚══════╝╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝
           ]],

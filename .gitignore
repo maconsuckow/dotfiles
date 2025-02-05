@@ -1,2 +1,5 @@
 .DS_Store
 .gitconfig
+
+tmux/.config/tmux/plugins/*
+nvim/.config/nvim/spell/*

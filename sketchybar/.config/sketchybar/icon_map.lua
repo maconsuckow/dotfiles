@@ -1,5 +1,6 @@
 return {
 	["Live"] = ":ableton:",
+	["Activity Monitor"] = ":activity_monitor:",
 	["Adobe Bridge"] = ":adobe_bridge:",
 	["Affinity Designer"] = ":affinity_designer:",
 	["Affinity Designer 2"] = ":affinity_designer_2:",
@@ -94,6 +95,7 @@ return {
 	["Godot"] = ":godot:",
 	["GoLand"] = ":goland:",
 	["Chromium"] = ":google_chrome:",
+	["Ghostty"] = ":ghostty:",
 	["Google Chrome"] = ":google_chrome:",
 	["Google Chrome Canary"] = ":google_chrome:",
 	["Grammarly Editor"] = ":grammarly:",

@@ -1,7 +1,3 @@
--- local palette = require("kanagawa.colors").palette
--- local kanagawa_themes = require("kanagawa.themes")
--- local dragon = kanagawa_themes.dragon(palette)
---
 local custom_kanagawa = {}
 custom_kanagawa.normal = {
 	a = { bg = "#8ba4b0", fg = "#0d0c0c" },
@@ -35,83 +31,81 @@ custom_kanagawa.inactive = {
 	c = { bg = "#0d0c0c", fg = "#C8C093" },
 }
 
+local function selectioncount()
+	local mode = vim.fn.mode(true)
+	local line_start, col_start = vim.fn.line("v"), vim.fn.col("v")
+	local line_end, col_end = vim.fn.line("."), vim.fn.col(".")
+	if mode:match("") then
+		return string.format(
+			"%d rows x %d cols",
+			math.abs(line_start - line_end) + 1,
+			math.abs(col_start - col_end) + 1
+		)
+	elseif mode:match("V") or line_start ~= line_end then
+		return string.format("rows: %d", math.abs(line_start - line_end) + 1)
+	elseif mode:match("v") then
+		return string.format("cols: %d", math.abs(col_start - col_end) + 1)
+	else
+		return ""
+	end
+end
+
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "yavorski/lualine-macro-recording.nvim" },
-	opts = {
-		options = {
-			theme = custom_kanagawa,
-			component_separators = { right = "--", left = "--" },
-			section_separators = { right = "", left = "" },
-			disabled_filetypes = { statusline = { "dashboard", "Neo-tree", "Lazy", "LazyVim" } },
-		},
-		sections = {
-			lualine_a = {
-				{ "mode", separator = { left = "", right = "" }, right_padding = 2 },
+	opts = function()
+		local icons = LazyVim.config.icons
+
+		return {
+			extensions = { "nvim-tree", "lazy", "mason", "neo-tree", "fugitive" },
+			options = {
+				theme = custom_kanagawa,
+				component_separators = { right = "--", left = "--" },
+				section_separators = { right = "", left = "" },
+				disabled_filetypes = { statusline = { "dashboard", "Neo-tree", "Lazy", "LazyVim" } },
 			},
-			lualine_b = {
-				-- { "branch" },
-				{ "branch", separator = { right = "" } },
-				{
-					"diff",
-					separator = { right = "" },
-					symbols = { added = "+", modified = "~", removed = "-" },
+			sections = {
+				lualine_a = {
+					{ "mode", separator = { left = "", right = "" }, right_padding = 2 },
 				},
-				-- {
-				--   "diagnostics",
-				--   symbols = {
-				--     error = icons.diagnostics.Error,
-				--     warn = icons.diagnostics.Warn,
-				--     info = icons.diagnostics.Info,
-				--     hint = icons.diagnostics.Hint,
-				--   },
-				--   colored = false,
-				--   separator = { left = "", right = "" },
-				-- },
+				lualine_b = {
+					-- { "branch" },
+					{ "branch", separator = { right = "" } },
+					{
+						"diff",
+						separator = { right = "" },
+						symbols = {
+							added = icons.git.added,
+							modified = icons.git.modified,
+							removed = icons.git.removed,
+						},
+					},
+					-- {
+					--   "diagnostics",
+					--   symbols = {
+					--     error = icons.diagnostics.Error,
+					--     warn = icons.diagnostics.Warn,
+					--     info = icons.diagnostics.Info,
+					--     hint = icons.diagnostics.Hint,
+					--   },
+					--   colored = false,
+					--   separator = { left = "", right = "" },
+					-- },
+				},
+				lualine_c = {
+					LazyVim.lualine.pretty_path({ relative = "root", length = 10 }),
+				},
+				lualine_x = {
+					Snacks.profiler.status(),
+					"searchcount",
+					selectioncount,
+					"filetype",
+				},
+				lualine_y = { { "progress", separator = { left = "" } } },
+				lualine_z = {
+					{ "location", separator = { left = "", right = "" } },
+					-- { "os.date('%a %b %d %I:%M %p')", separator = { right = "" }, left_padding = 2 },
+				},
 			},
-			lualine_c = {
-				LazyVim.lualine.pretty_path({ relative = "root", length = 10 }),
-				{ "macro_recording" },
-			},
-			lualine_x = {
-				-- { "searchcount", separator = { left = "" }, right_padding = 2 },
-				-- {
-				--   function()
-				--     return require("noice").api.status.command.get()
-				--   end,
-				--   cond = function()
-				--     return package.loaded["noice"] and require("noice").api.status.command.has()
-				--   end,
-				--   color = function()
-				--     return LazyVim.ui.fg("Statement")
-				--   end,
-				-- },
-				-- LazyVim.lualine.cmp_source("codeium"),
-				-- stylua: ignore
-				-- {
-				--   function() return require("noice").api.status.mode.get() end,
-				--   cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-				--   color = function() return LazyVim.ui.fg("Constant") end,
-				-- },
-				-- stylua: ignore
-				-- {
-				--   function() return "  " .. require("dap").status() end,
-				--   cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-				--   color = function() return LazyVim.ui.fg("Debug") end,
-				-- },
-				-- {
-				--   require("lazy.status").updates,
-				--   cond = require("lazy.status").has_updates,
-				--   color = function()
-				--     return LazyVim.ui.fg("Special")
-				--   end,
-				-- },
-			},
-			lualine_y = { { "progress", separator = { left = "" } } },
-			lualine_z = {
-				{ "location", separator = { left = "" } },
-				{ "os.date('%a %b %d %I:%M %p')", separator = { right = "" }, left_padding = 2 },
-			},
-		},
-	},
+		}
+	end,
 }
