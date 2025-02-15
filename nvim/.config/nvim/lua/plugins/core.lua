@@ -5,6 +5,7 @@ return {
 			colorscheme = "kanagawa-dragon",
 			-- colorscheme = "catppuccin",
 			-- colorscheme = "gruvbox",
+			-- colorscheme = "nordfox",
 		},
 	},
 }

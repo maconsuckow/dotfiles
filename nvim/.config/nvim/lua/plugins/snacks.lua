@@ -23,6 +23,9 @@ return {
 			explorer = {
 				replace_netrw = true,
 			},
+			words = {
+				enabled = false,
+			},
 			picker = {
 				sources = {
 					explorer = {
@@ -30,7 +33,7 @@ return {
 						auto_close = true,
 						hidden = true,
 						-- layout = { preset = "vscode", preview = true },
-						layout = { preset = "vertical" },
+						layout = { preset = "default", layout = { width = 0.5 } },
 					},
 				},
 			},
@@ -45,7 +48,8 @@ return {
 			dashboard = {
 				enable = true,
 				sections = {
-					{ section = "header" },
+					{ section = "header", padding = 1 },
+					{ section = "terminal", cmd = "cmatrix", padding = 2, height = 5 },
 					{ section = "keys", gap = 1, padding = 1 },
 					{ section = "startup" },
 				},
