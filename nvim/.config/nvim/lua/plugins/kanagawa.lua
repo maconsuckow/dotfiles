@@ -1,9 +1,8 @@
 return {
 	"rebelot/kanagawa.nvim",
+	build = ":KanagawaBuild",
 	enabled = true,
-	compile = true,
 	lazy = false,
-	build = "KanagawaCompile",
 	opts = {
 		transparent = true,
 		commentStyle = { italic = true },

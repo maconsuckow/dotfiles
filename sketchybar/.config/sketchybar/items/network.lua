@@ -188,9 +188,9 @@ local function copyLabelToClipboard(env)
 	end)
 end
 
--- wifi:subscribe("mouse.clicked", toggleDetails)
-wifi:subscribe("mouse.entered", toggleDetails)
-wifi:subscribe("mouse.exited", toggleDetails)
+wifi:subscribe("mouse.clicked", toggleDetails)
+-- wifi:subscribe("mouse.entered", toggleDetails)
+-- wifi:subscribe("mouse.exited", toggleDetails)
 
 ssid:subscribe("mouse.clicked", copyLabelToClipboard)
 hostname:subscribe("mouse.clicked", copyLabelToClipboard)

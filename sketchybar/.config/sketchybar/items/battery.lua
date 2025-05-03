@@ -83,15 +83,15 @@ local function toggle_details()
 	if drawing == "off" then
 		sbar.exec("pmset -g batt", function(batt_info)
 			local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
-			local label = found and remaining .. "h" or "N/A"
+			local label = found and remaining .. " Hours" or "N/A"
 			remaining_time:set({ label = label })
 		end)
 	end
 end
 
--- battery:subscribe("mouse.clicked", toggle_details)
-battery:subscribe("mouse.entered", toggle_details)
-battery:subscribe("mouse.exited", toggle_details)
+battery:subscribe("mouse.clicked", toggle_details)
+-- battery:subscribe("mouse.entered", toggle_details)
+-- battery:subscribe("mouse.exited", toggle_details)
 
 -- sbar.add("bracket", "widgets.battery.bracket", { battery.name }, {})
 --

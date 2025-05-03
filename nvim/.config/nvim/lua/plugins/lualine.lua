@@ -52,6 +52,9 @@ end
 
 return {
 	"nvim-lualine/lualine.nvim",
+	dependencies = {
+		{ "yavorski/lualine-macro-recording.nvim" },
+	},
 	opts = function()
 		local icons = LazyVim.config.icons
 
@@ -93,6 +96,7 @@ return {
 				},
 				lualine_c = {
 					LazyVim.lualine.pretty_path({ relative = "root", length = 10 }),
+					{ "macro_recording", "%S" },
 				},
 				lualine_x = {
 					Snacks.profiler.status(),

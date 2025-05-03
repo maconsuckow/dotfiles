@@ -133,8 +133,8 @@ local function volume_scroll(env)
 	sbar.exec('osascript -e "set volume output volume (output volume of (get volume settings) + ' .. delta .. ')"')
 end
 
--- volume_icon:subscribe("mouse.clicked", volume_toggle_details)
-volume_icon:subscribe("mouse.entered", volume_toggle_details)
-volume_icon:subscribe("mouse.exited", volume_toggle_details)
+volume_icon:subscribe("mouse.clicked", volume_toggle_details)
+-- volume_icon:subscribe("mouse.entered", volume_toggle_details)
+-- volume_icon:subscribe("mouse.exited", volume_toggle_details)
 volume_icon:subscribe("mouse.scrolled", volume_scroll)
 volume_icon:subscribe("mouse.exited.global", volume_collapse_details)

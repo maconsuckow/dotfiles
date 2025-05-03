@@ -6,4 +6,9 @@
 -- vim.keymap.set("n", "<leader>o", "o<Esc>k")
 -- vim.keymap.set("n", "<leader>O", "O<Esc>j")
 
+local map = LazyVim.safe_keymap_set
+
+map("i", "jk", "<Esc>", { noremap = true })
+map("i", "jj", "<Esc>", { noremap = true })
+
 print("keymaps loaded")
