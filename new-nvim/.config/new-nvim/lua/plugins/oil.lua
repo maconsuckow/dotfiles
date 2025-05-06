@@ -1,8 +1,5 @@
 return {
-	{
 		"stevearc/oil.nvim",
-		dependencies = { { "echasnovski/mini.icons", opts = {} } },
-		enabled = false,
 		opts = {
 			default_file_explorer = true,
 			columns = { "icon", "size" },
@@ -19,12 +16,11 @@ return {
 			},
 			watch_for_changes = true,
 		},
-		keys = {
+        		keys = {
 			{
-				"<leader>e",
+				"<leader>-",
 				"<cmd>Oil --float<cr>",
 				desc = "Open parent directory",
 			},
 		},
-	},
 }
