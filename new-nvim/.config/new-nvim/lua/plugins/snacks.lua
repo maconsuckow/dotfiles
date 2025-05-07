@@ -1,5 +1,6 @@
 return {
 	"folke/snacks.nvim",
+	lazy = false,
 	opts = {
 		bigfile = { enabled = true },
 		dashboard = {
@@ -15,11 +16,49 @@ return {
 		},
 		indent = { enabled = true },
 		input = { enabled = true },
-		picker = { enabled = false },
+		picker = { enabled = true },
+		notify = { enabled = false },
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
 		scope = { enabled = false },
-		scroll = { enabled = true },
+		scroll = { enabled = true, animate = { duration = { total = 100 } } },
 		word = { enabled = false },
+	},
+	keys = {
+		{
+			"<leader><space>",
+			function()
+				Snacks.picker.smart()
+			end,
+			desc = "Smart Find Files",
+		},
+		{
+			"<leader>b",
+			function()
+				Snacks.picker.buffers()
+			end,
+			desc = "Buffers",
+		},
+		{
+			"<leader>/",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Grep",
+		},
+		{
+			"<leader>:",
+			function()
+				Snacks.picker.command_history()
+			end,
+			desc = "Command History",
+		},
+		{
+			"<leader>n",
+			function()
+				Snacks.picker.notifications()
+			end,
+			desc = "Notification History",
+		},
 	},
 }

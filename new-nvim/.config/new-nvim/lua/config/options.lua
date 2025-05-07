@@ -4,9 +4,9 @@ vim.opt.langmap = "+]ü["
 vim.keymap.set("n", "ü", "[", { remap = true })
 
 vim.opt.expandtab = true -- Convert tabs to spaces
-vim.opt.shiftwidth = 4 -- Amount to indent with << and >>
-vim.opt.tabstop = 4 -- How many spaces are shown per Tab
-vim.opt.softtabstop = 4 -- How many spaces are applied when pressing Tab
+vim.opt.shiftwidth = 2 -- Amount to indent with << and >>
+vim.opt.tabstop = 2 -- How many spaces are shown per Tab
+-- vim.opt.softtabstop = 4 -- How many spaces are applied when pressing Tab
 
 vim.opt.smarttab = true
 vim.opt.smartindent = true
@@ -53,10 +53,10 @@ vim.opt.scrolloff = 5
 
 vim.g.have_nerd_font = true
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
