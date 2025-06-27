@@ -19,34 +19,9 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = tr
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
-vim.keymap.set("n", "<leader>bd", function()
-	Snacks.bufdelete()
-end, { desc = "Delete Buffer" })
-vim.keymap.set("n", "<leader>bo", function()
-	Snacks.bufdelete.other()
-end, { desc = "Delete Other Buffers" })
-
 -- better indenting
 vim.keymap.set("v", "<", "<gv", { desc = "Indent Left" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent Right" })
-
--- vim.keymap.set("n", "<leader><space>", function()
--- 	Snacks.picker.smart()
--- end, { desc = "Smart Find Files" })
--- vim.keymap.set("n", "<leader>b", function()
--- 	Snacks.picker.buffers() end, { desc = "Buffers" })
--- vim.keymap.set("n", "<leader>/", function()
--- 	Snacks.picker.grep()
--- end, { desc = "Grep" })
--- vim.keymap.set("n", "<leader>:", function()
--- 	Snacks.picker.command_history()
--- end, { desc = "Command History" })
--- vim.keymap.set("n", "<leader>n", function()
--- 	Snacks.picker.notifications()
--- end, { desc = "Notification History" })
--- vim.keymap.set("n", "<leader>e", function()
--- 	Snacks.explorer()
--- end, { desc = "File Explorer" })
 
 -- Jump to the definition of the word under your cursor.
 --  This is where a variable was first declared, or where a function is defined, etc.

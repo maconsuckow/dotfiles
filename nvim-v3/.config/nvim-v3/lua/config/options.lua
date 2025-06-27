@@ -1,8 +1,3 @@
--- Some keyboard mappings as I don't want to break my fingers, while typing on a "german" keyboard ;)
-vim.opt.langmap = "+]ü["
--- Plain langmap remapping does not seem to do the trick :(
-vim.keymap.set("n", "ü", "[", { remap = true })
-
 vim.opt.expandtab = true -- Convert tabs to spaces
 vim.opt.shiftwidth = 2 -- Amount to indent with << and >>
 vim.opt.tabstop = 2 -- How many spaces are shown per Tab
@@ -52,13 +47,3 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.scrolloff = 5
 
 vim.g.have_nerd_font = true
-
--- vim.api.nvim_create_autocmd("TextYankPost", {
--- 	desc = "Highlight when yanking (copying) text",
--- 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
--- 	callback = function()
--- 		vim.highlight.on_yank()
--- 	end,
--- })
-
-vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = "#808080", italic = true })
