@@ -1,9 +1,10 @@
 return {
 	"rebelot/kanagawa.nvim",
-	build = ":KanagawaBuild",
+	build = ":KanagawaCompile",
 	enabled = true,
 	lazy = false,
 	opts = {
+		compile = true,
 		transparent = true,
 		commentStyle = { italic = true },
 		theme = "dragon",
@@ -17,7 +18,18 @@ return {
 			},
 		},
 		overrides = function(colors)
+			local theme = colors.theme
+			local makeDiagnosticColor = function(color)
+				local c = require("kanagawa.lib.color")
+				return { fg = color, bg = c(color):blend(theme.ui.bg, 0.95):to_hex() }
+			end
+
 			return {
+				DiagnosticVirtualTextHint = makeDiagnosticColor(theme.diag.hint),
+				DiagnosticVirtualTextInfo = makeDiagnosticColor(theme.diag.info),
+				DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
+				DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
+
 				NormalFloat = { bg = "none" },
 				FloatBorder = { bg = "none" },
 				FloatTitle = { bg = "none" },

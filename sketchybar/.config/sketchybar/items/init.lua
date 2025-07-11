@@ -2,7 +2,7 @@ require("items.apple")
 require("items.front_app")
 require("items.aerospace2")
 
-require("items.media")
+-- require("items.media")
 require("items.clock")
 require("items.battery")
 require("items.network")

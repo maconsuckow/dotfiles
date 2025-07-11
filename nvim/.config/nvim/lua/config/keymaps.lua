@@ -9,6 +9,8 @@
 local map = LazyVim.safe_keymap_set
 
 map("i", "jk", "<Esc>", { noremap = true })
-map("i", "jj", "<Esc>", { noremap = true })
+
+-- map("n", "gv", "<cmd>:vsplit<CR>gd", { noremap = true })
+map("n", "gv", ":vsplit | lua vim.lsp.buf.definition()<CR>", { noremap = true })
 
 print("keymaps loaded")

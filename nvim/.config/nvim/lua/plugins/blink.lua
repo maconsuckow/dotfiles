@@ -1,24 +1,25 @@
 return {
 	{
 		"saghen/blink.cmp",
-		dependencies = { "Exafunction/codeium.nvim", "saghen/blink.compat" },
+		dependencies = { "saghen/blink.compat" },
 		opts = {
 			sources = {
-				-- default = { "lsp", "codeium", "path", "snippets", "buffer", "dadbod" },
-				default = { "lsp", "path", "snippets", "buffer", "dadbod" },
-				-- compat = { "codeium" },
+				default = { "lsp", "buffer", "snippets", "path" },
+				per_filetype = {
+					sql = { "dadbod" },
+				},
 				providers = {
-					-- codeium = {
-					-- 	name = "Codeium",
-					-- 	module = "codeium.blink",
-					-- 	async = true,
-					-- },
 					dadbod = {
 						name = "Dadbod",
 						module = "vim_dadbod_completion.blink",
 					},
 				},
 			},
+			-- indent = {
+			-- 	enabled = true,
+			-- 	-- start with indent guides visible
+			-- 	visible = true,
+			-- },
 			signature = {
 				enabled = true,
 				window = {
@@ -34,6 +35,9 @@ return {
 					winhighlight = "Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder",
 					auto_show = true,
 					scrollbar = false,
+					draw = {
+						treesitter = { "lsp" },
+					},
 				},
 				documentation = {
 					window = {
