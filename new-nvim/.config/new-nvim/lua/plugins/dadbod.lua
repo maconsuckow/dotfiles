@@ -22,9 +22,6 @@ return {
 		vim.g.db_ui_use_postgres_views = 0
 	end,
 	keys = {
-		{
-			"<leader>dd",
-			"<cmd>DBUIToggle<cr>",
-		},
+		{ "<leader>dd", "<cmd>DBUIToggle<cr>", desc = "Dadbod UI Toggle" },
 	},
 }
