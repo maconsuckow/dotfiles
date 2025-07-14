@@ -21,7 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-require('config.options')
+require("config.options")
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -40,7 +40,14 @@ require("lazy").setup({
 			width = 0.8,
 			height = 0.8,
 		},
-	}
+	},
 })
 
-require('config.keymaps')
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
+})
+
+require("config.keymaps")

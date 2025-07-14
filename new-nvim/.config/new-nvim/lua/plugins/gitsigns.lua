@@ -1,6 +1,5 @@
 return {
 	"lewis6991/gitsigns.nvim",
-  enabled = false,
 	opts = {
     signcolumn = true,
     auto_attach = true,
