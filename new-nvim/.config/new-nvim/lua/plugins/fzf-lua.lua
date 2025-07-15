@@ -18,16 +18,23 @@ return {
 		{ "<leader>gf", "<cmd>FzfLua git_files<CR>", "Git Files" },
 		{ "<leader>gs", "<cmd>FzfLua git_status<CR>", "Git Status" },
 	},
-	opts = {
-		defaults = {
-			formatter = "path.filename_first",
-		},
-		files = {
-			previewer = "bat",
-			git_icons = true,
-		},
-	},
 	config = function()
+		require("fzf-lua").setup({
+			{
+				winopts = {
+					height = 0.5,
+					width = 0.5,
+				},
+				defaults = {
+					formatter = "path.filename_first",
+				},
+				files = {
+					previewer = "bat",
+					git_icons = true,
+					formatter = "path.filename_first",
+				},
+			},
+		})
 		require("fzf-lua").register_ui_select()
 	end,
 }

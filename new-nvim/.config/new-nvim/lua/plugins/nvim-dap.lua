@@ -155,6 +155,13 @@ return {
 			end,
 			desc = "Toggle DAP UI",
 		},
+		{
+			"<leader>de",
+			function()
+				require("dapui").eval()
+			end,
+			desc = "Evaluate Expression",
+		},
 	},
 
 	config = function()
@@ -163,23 +170,31 @@ return {
 
 		dapui.setup({
 			-- For a good default layout, consider something like this:
-			-- elements = {
-			--   {
-			--     "scopes",
-			--     "breakpoints",
-			--     "stacks",
-			--     "watches",
-			--   },
-			--   {
-			--     "repl",
-			--     "console",
-			--   },
-			-- },
-			-- layout = {
-			--   alignment = "bottom", -- "top", "bottom", "left", "right"
-			--   position = "right", -- "left", "right", "top", "bottom"
-			--   size = 40,
-			-- },
+			elements = {
+				{
+					"scopes",
+					"breakpoints",
+					"stacks",
+					"watches",
+				},
+				{
+					"repl",
+					"console",
+				},
+			},
+			layouts = {
+				{
+					elements = {
+						"scopes",
+						"breakpoints",
+					},
+					position = "left",
+					size = 40,
+				},
+				{ elements = {
+					"repl",
+				}, position = "bottom", size = 15 },
+			},
 			-- You'll want to customize this to your preference.
 			-- Refer to :help dapui.txt for full options.
 		})
