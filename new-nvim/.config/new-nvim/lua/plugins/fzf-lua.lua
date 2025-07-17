@@ -20,20 +20,26 @@ return {
 	},
 	config = function()
 		require("fzf-lua").setup({
-			{
-				winopts = {
-					height = 0.5,
-					width = 0.5,
-				},
-				defaults = {
-					formatter = "path.filename_first",
-				},
-				files = {
-					previewer = "bat",
-					git_icons = true,
-					formatter = "path.filename_first",
+			winopts = {
+				preview = {
+					horizontal = "right:50%",
 				},
 			},
+			defaults = {
+				formatter = "path.filename_first",
+			},
+			grep = {
+				winopts = {
+					width = 0.9,
+					preview = {
+						horizontal = "right:30%",
+					},
+				},
+			},
+			-- files = {
+			-- 	previewer = "bat",
+			-- 	git_icons = true,
+			-- },
 		})
 		require("fzf-lua").register_ui_select()
 	end,
