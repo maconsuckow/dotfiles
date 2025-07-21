@@ -36,6 +36,11 @@ return {
 					},
 				},
 			},
+			keymap = {
+				fzf = {
+					["ctrl-q"] = "select-all+accept",
+				},
+			},
 			-- files = {
 			-- 	previewer = "bat",
 			-- 	git_icons = true,

@@ -1,0 +1,5 @@
+# Which is equivalent to
+# format = '$all$directory$character'
+add_newline = false
+format = """$directory$character"""
+right_format = "$hostname$git_branch$time"
