@@ -7,7 +7,7 @@ return {
 		{ "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
 		-- { "microsoft/vscode-js-debug", build = "npm install --legacy-peer-deps && npm run compile" },
 		{
-			"mason-org/mason.nvim",
+			"williamboman/mason.nvim",
 			opts = function(_, opts)
 				opts.ensure_installed = opts.ensure_installed or {}
 				table.insert(opts.ensure_installed, "js-debug-adapter")

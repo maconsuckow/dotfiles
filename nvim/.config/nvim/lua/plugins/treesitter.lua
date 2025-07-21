@@ -5,30 +5,29 @@ return {
 		local configs = require("nvim-treesitter.configs")
 
 		configs.setup({
+			highlight = { enable = true },
+			indent = { enable = true },
 			ensure_installed = {
 				"bash",
-				"graphql",
 				"html",
 				"javascript",
+				"jsdoc",
 				"json",
+				"jsonc",
 				"lua",
+				"luadoc",
 				"markdown",
 				"markdown_inline",
-				"query",
+				"python",
 				"regex",
-				"sql",
+				"toml",
 				"tsx",
 				"typescript",
 				"vim",
-				"yaml",
 				"vimdoc",
-				"query",
+				"xml",
+				"yaml",
 			},
-			auto_install = true,
-			sync_install = false,
-			highlight = { enable = true },
-			indent = { enable = true },
-
 			incremental_selection = {
 				enable = true,
 				keymaps = {

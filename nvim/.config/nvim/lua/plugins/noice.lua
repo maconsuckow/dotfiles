@@ -8,6 +8,14 @@ return {
 			enabled = false,
 		},
 		lsp = {
+			progress = {
+				enabled = true,
+				view = "notify",
+				timeout = 5000,
+				opts = {
+					size = "small",
+				},
+			},
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 			override = {
 				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
