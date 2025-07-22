@@ -10,7 +10,7 @@ return {
 		lsp = {
 			progress = {
 				enabled = true,
-				view = "notify",
+				view = "mini",
 				timeout = 5000,
 				opts = {
 					size = "small",

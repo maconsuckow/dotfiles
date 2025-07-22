@@ -5,8 +5,7 @@ local spaces = {}
 
 local spaceConfigs = {
 	["T"] = { family = "sketchybar-app-font", icon = icon_map["kitty"], name = "Terminal" },
-	["P"] = { family = "JetBrainsMono Nerd Font", icon = icons.applications.process, name = "Process" },
-	["B"] = { family = "sketchybar-app-font", icon = icon_map["Arc"], name = "Browsing" },
+	["B"] = { family = "sketchybar-app-font", icon = icon_map["Google Chrome"], name = "Browsing" },
 	["C"] = { family = "sketchybar-app-font", icon = icon_map["Messages"], name = "Communication" },
 	["D"] = { family = "JetBrainsMono Nerd Font", icon = icons.applications.database, name = "Database" },
 	["S"] = { family = "sketchybar-app-font", icon = icon_map["Spotify"], name = "Spotify" },
@@ -108,7 +107,6 @@ local function createWorkspaces()
 
 		sbar.add("bracket", "aerospace.bracket", {
 			"workspaces.T",
-			"workspaces.P",
 			"workspaces.B",
 			"workspaces.C",
 			"workspaces.D",

@@ -81,89 +81,79 @@ outer.bottom = 8
 outer.top = [{ monitor.main = 16 }, 8]
 outer.right = 8
 
-# 1 = Terminal (Kitty)
-# 2 = Process (Builds, Long Running Processes)
-# 3 = Browser (Arc, Chrome)
-# 4 = Communication (Slack, Zoom)
-# 5 = Database (TablePlus)
-# 6 = API (Postman, Insomnia)
-# 7 = Outlook (Outlook)
-# 8 = Spotify
-# 9 = MacOS (Finder, Settings)
+# 1 = Terminal (Ghostty)
+# 2 = Browser (Arc, Chrome)
+# 3 = Communication (Slack, Zoom)
+# 4 = Database (TablePlus)
+# 5 = API (Postman, Insomnia)
+# 6 = Outlook (Outlook)
+# 7 = Spotify
+# 8 = MacOS (Finder, Settings)
 [workspace-to-monitor-force-assignment]
-8 = 'built-in'
-4 = 'built-in'
-5 = 'built-in'
 7 = 'built-in'
-9 = 'built-in'
+3 = 'built-in'
+4 = 'built-in'
+6 = 'built-in'
+8 = 'built-in'
 1 = 'S24D300 \(1\)'
-2 = 'S24D300 \(1\)'
-6 = ['S24D300 \(2\)', 'MNN']
-3 = ['S24D300 \(2\)', 'MNN']
-
-[[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
-run = ['layout tiling', 'move-node-to-workspace 2']
+5 = ['S24D300 \(2\)', 'MNN']
+2 = ['S24D300 \(2\)', 'MNN']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Ghostty'
-run = ['layout tiling', 'move-node-to-workspace 2']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Arc'
-run = ['layout tiling', 'move-node-to-workspace 3']
+run = ['layout tiling', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = ['layout tiling', 'move-node-to-workspace 3']
+run = ['layout tiling', 'move-node-to-workspace 2']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Spotify'
-run = ['layout tiling', 'move-node-to-workspace 8']
+run = ['layout tiling', 'move-node-to-workspace 7']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Plex'
-run = ['layout tiling', 'move-node-to-workspace 8']
+run = ['layout tiling', 'move-node-to-workspace 7']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Slack'
-run = ['layout floating', 'move-node-to-workspace 4']
+run = ['layout floating', 'move-node-to-workspace 3']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Outlook'
-run = ['layout floating', 'move-node-to-workspace 7']
+run = ['layout floating', 'move-node-to-workspace 6']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Zoom'
-run = ['layout tiling', 'move-node-to-workspace 4']
+run = ['layout tiling', 'move-node-to-workspace 3']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Plus'
-run = ['layout tiling', 'move-node-to-workspace 5']
+run = ['layout tiling', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Postman'
-run = ['layout tiling', 'move-node-to-workspace 6']
+run = ['layout tiling', 'move-node-to-workspace 5']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Finder'
-run = ['layout tiling', 'move-node-to-workspace 9']
+run = ['layout tiling', 'move-node-to-workspace 8']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Notes'
-run = ['layout tiling', 'move-node-to-workspace 9']
+run = ['layout tiling', 'move-node-to-workspace 8']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'System'
-run = ['layout tiling', 'move-node-to-workspace 9']
+run = ['layout tiling', 'move-node-to-workspace 8']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Activity'
-run = ['layout tiling', 'move-node-to-workspace 9']
+run = ['layout tiling', 'move-node-to-workspace 8']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Excel'
-run = ['layout tiling', 'move-node-to-workspace 9']
+run = ['layout tiling', 'move-node-to-workspace 5']
 
 # [[on-window-detected]]
 # if.app-name-regex-substring = 'Obsidian'

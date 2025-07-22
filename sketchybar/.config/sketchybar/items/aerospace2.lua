@@ -67,7 +67,6 @@ local function createWorkspaces()
 			"workspaces.6",
 			"workspaces.7",
 			"workspaces.8",
-			"workspaces.9",
 		}, {})
 
 		findAndSelectCurrentWorkspace()

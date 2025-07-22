@@ -71,3 +71,5 @@ vim.opt.foldlevel = 99
 -- vim.opt.foldlevelstart = 1
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.wrap = false
