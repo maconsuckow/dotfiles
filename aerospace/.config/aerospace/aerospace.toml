@@ -99,61 +99,61 @@ outer.right = 8
 5 = ['S24D300 \(2\)', 'MNN']
 2 = ['S24D300 \(2\)', 'MNN']
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'Ghostty'
-run = ['layout tiling', 'move-node-to-workspace 1']
-
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-run = ['layout tiling', 'move-node-to-workspace 2']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Spotify'
-run = ['layout tiling', 'move-node-to-workspace 7']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Plex'
-run = ['layout tiling', 'move-node-to-workspace 7']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Slack'
-run = ['layout floating', 'move-node-to-workspace 3']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Outlook'
-run = ['layout floating', 'move-node-to-workspace 6']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Zoom'
-run = ['layout tiling', 'move-node-to-workspace 3']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Plus'
-run = ['layout tiling', 'move-node-to-workspace 4']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Postman'
-run = ['layout tiling', 'move-node-to-workspace 5']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Finder'
-run = ['layout tiling', 'move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Notes'
-run = ['layout tiling', 'move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'System'
-run = ['layout tiling', 'move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Activity'
-run = ['layout tiling', 'move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Excel'
-run = ['layout tiling', 'move-node-to-workspace 5']
+# [[on-window-detected]]
+# if.app-id = 'com.mitchellh.ghostty'
+# run = ['layout tiling', 'move-node-to-workspace 1']
+#
+# [[on-window-detected]]
+# if.app-id = 'com.google.Chrome'
+# run = ['layout tiling', 'move-node-to-workspace 2']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Spotify'
+# run = ['layout tiling', 'move-node-to-workspace 7']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Plex'
+# run = ['layout tiling', 'move-node-to-workspace 7']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Slack'
+# run = ['layout floating', 'move-node-to-workspace 3']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Outlook'
+# run = ['layout floating', 'move-node-to-workspace 6']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Zoom'
+# run = ['layout tiling', 'move-node-to-workspace 3']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Plus'
+# run = ['layout tiling', 'move-node-to-workspace 4']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Postman'
+# run = ['layout tiling', 'move-node-to-workspace 5']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Finder'
+# run = ['layout tiling', 'move-node-to-workspace 8']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Notes'
+# run = ['layout tiling', 'move-node-to-workspace 8']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'System'
+# run = ['layout tiling', 'move-node-to-workspace 8']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Activity'
+# run = ['layout tiling', 'move-node-to-workspace 8']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Excel'
+# run = ['layout tiling', 'move-node-to-workspace 5']
 
 # [[on-window-detected]]
 # if.app-name-regex-substring = 'Obsidian'
@@ -220,7 +220,6 @@ alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -231,7 +230,6 @@ alt-shift-5 = 'move-node-to-workspace 5'
 alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
 
 alt-shift-l = 'focus-monitor right'
 alt-shift-h = 'focus-monitor left'

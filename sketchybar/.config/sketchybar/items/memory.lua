@@ -3,7 +3,7 @@ local icons = require("icons")
 local colors = require("colors")
 
 local memory = sbar.add("item", "memory", {
-	position = "right",
+	position = "e",
 	icon = {
 		string = icons.cpu,
 		font = {
@@ -19,7 +19,7 @@ local memory = sbar.add("item", "memory", {
 		},
 		padding_right = 10,
 	},
-	update_freq = 60,
+	update_freq = 10,
 	background = {
 		color = colors.transparent,
 		height = 30,

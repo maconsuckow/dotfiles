@@ -40,6 +40,7 @@ return {
 			custom_separators = { right = "--", left = "--" },
 			section_separators = { right = "", left = "" },
 			disabled_filetypes = { statusline = { "dashboard", "Lazy" } },
+			globalstatus = true,
 		},
 		sections = {
 			lualine_a = {
