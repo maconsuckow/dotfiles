@@ -8,6 +8,7 @@ return {
 	clipboard = "􀉄",
 	activity = "􀒓",
 	lock = "􀒳",
+  calendar = "󰭦",
 	applications = {
 		browser = "󰖟",
 		communication = "󰍡",
