@@ -2,30 +2,33 @@ return {
 	"stevearc/conform.nvim",
 	keys = {
 		{
-			"<leader>f",
+			"<leader>fc",
 			function()
 				require("conform").format({ async = true, lsp_format = "never" })
 			end,
 			mode = "",
-			desc = "[F]ormat buffer",
+			desc = "[F]ormat [C]ode",
 		},
 	},
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
-			-- Conform will run multiple formatters sequentially
-			python = { "isort", "black" },
-			-- You can customize some of the format options for the filetype (:help conform.format)
-			rust = { "rustfmt" },
-			-- Conform will run the first available formatter
-      javascript = { "prettierd", "prettier" },
-      javascriptreact = { "prettierd", "prettier" },
-      typescript = { "prettierd", "prettier" },
-      typescriptreact = { "prettierd", "prettier" },
+			-- python = { "isort", "black" },
+			-- rust = { "rustfmt" },
+			-- javascript = { "prettierd", "prettier", "biome", "biome-organize-imports" },
+			-- javascriptreact = { "prettierd", "prettier", "biome", "biome-organize-imports" },
+			-- typescript = { "prettierd", "prettier", "biome", "biome-organize-imports" },
+			-- typescriptreact = { "prettierd", "prettier", "biome", "biome-organize-imports" },
+
 			-- javascript = { "biome", "biome-organize-imports" },
 			-- javascriptreact = { "biome", "biome-organize-imports" },
 			-- typescript = { "biome", "biome-organize-imports" },
 			-- typescriptreact = { "biome", "biome-organize-imports" },
+
+			javascript = { "prettierd", "prettier" },
+			javascriptreact = { "prettierd", "prettier" },
+			typescript = { "prettierd", "prettier" },
+			typescriptreact = { "prettierd", "prettier" },
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()

@@ -6,7 +6,7 @@ local front_app = sbar.add("item", "front_app", {
   position = "q",
   icon = {
     padding_left = 10,
-    padding_right = 10,
+    padding_right = 0,
   },
   label = {
     padding_right = 10,
