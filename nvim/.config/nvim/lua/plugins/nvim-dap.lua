@@ -5,7 +5,6 @@ return {
 
 	dependencies = {
 		{ "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
-		-- { "microsoft/vscode-js-debug", build = "npm install --legacy-peer-deps && npm run compile" },
 		{
 			"williamboman/mason.nvim",
 			opts = function(_, opts)
