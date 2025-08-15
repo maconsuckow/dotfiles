@@ -73,3 +73,8 @@ vim.opt.foldlevel = 99
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.wrap = false
+
+vim.opt.conceallevel = 1
+
+vim.opt.guifont = "JetBrainsMono Nerd Font"
+vim.opt.guifontwide = "JetBrainsMono Nerd Font"

@@ -209,6 +209,37 @@ return {
 			dapui.close()
 		end
 
+		vim.fn.sign_define("DapStopped", {
+			text = "󰁕 ",
+			texthl = "DiagnosticWarn",
+			linehl = "DapStoppedLine",
+			numhl = "",
+		})
+		vim.fn.sign_define("DapBreakpoint", {
+			text = " ",
+			texthl = "",
+			linehl = "",
+			numhl = "",
+		})
+		vim.fn.sign_define("DapBreakpointCondition", {
+			text = " ",
+			texthl = "",
+			linehl = "",
+			numhl = "",
+		})
+		vim.fn.sign_define("DapBreakpointRejected", {
+			text = " ",
+			texthl = "DiagnosticError",
+			linehl = "",
+			numhl = "",
+		})
+		vim.fn.sign_define("DapLogPoint", {
+			text = ".>",
+			texthl = "",
+			linehl = "",
+			numhl = "",
+		})
+
 		-- Configure the 'pwa-node' debug adapter
 		-- This tells nvim-dap how to start the debug adapter
 		dap.adapters["pwa-node"] = {

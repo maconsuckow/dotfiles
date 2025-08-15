@@ -86,6 +86,20 @@ return {
 			end,
 			desc = "LSP: [G]oto [I]mplementation",
 		},
+		{
+			"<leader>gb",
+			function()
+				Snacks.git.blame_line()
+			end,
+			desc = "Git Blame Line",
+		},
+		{
+			"<leader>z",
+			function()
+				Snacks.zen()
+			end,
+			desc = "Zen",
+		},
 	},
 	opts = {
 		bigfile = { enabled = true },
@@ -118,6 +132,13 @@ return {
 							filename_first = true,
 						},
 					},
+					win = {
+						list = {
+							keys = {
+								["<c-c>"] = "", -- I would rather this do nothing than change working directory
+							},
+						},
+					},
 				},
 			},
 		},
@@ -137,6 +158,8 @@ return {
 			-- },
 		},
 		word = { enabled = false },
+		zen = {
+			enabled = true,
+		},
 	},
-	a,
 }
