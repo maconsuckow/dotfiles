@@ -11,7 +11,14 @@ return {
 				path = "~/Documents/Personal",
 			},
 		},
+		templates = {
+			folder = "Templates",
+		},
 
-		-- see below for full list of options 👇
+		disable_frontmatter = true,
+	},
+	keys = {
+		{ "<leader>of", "<cmd>Obsidian follow_link<CR>", "[O]bsidian [F]ollow Link" },
+		{ "<leader>it", "<cmd>Obsidian template<CR>", "Obsidian [I]nsert [T]emplate" },
 	},
 }
