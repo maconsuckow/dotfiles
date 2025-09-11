@@ -21,7 +21,7 @@ return {
 	config = function()
 		require("codeium").setup({
 			virtual_text = {
-				enabled = true,
+				enabled = false,
 			},
 			default_filetype_enabled = true,
 			filetypes = {
