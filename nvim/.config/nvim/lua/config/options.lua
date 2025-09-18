@@ -64,10 +64,10 @@ vim.g.have_nerd_font = true
 
 vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = "#808080", italic = true })
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldmethod = "syntax"
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldcolumn = "0"
-vim.opt.foldtext = ""
+-- vim.opt.foldtext = ""
 vim.opt.foldlevel = 99
 -- vim.opt.foldlevelstart = 1
 

@@ -1,9 +1,9 @@
 return {
 	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile", "BufWritePre" },
 	dependencies = {
-		{ "williamboman/mason.nvim", opts = {} },
-		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		"mason.nvim",
+		{ "williamboman/mason-lspconfig.nvim", config = function() end },
 	},
 	config = function()
 		-- vim.api.nvim_create_autocmd("LspAttach", {
@@ -138,13 +138,13 @@ return {
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			"stylua",
-		})
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+		-- vim.list_extend(ensure_installed, {
+		-- 	"stylua",
+		-- })
+		-- require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 		require("mason-lspconfig").setup({
-			ensure_installed = { "lua_ls", "rust_analyzer" },
+			ensure_installed = vim.tbl_deep_extend("force", ensure_installed, {}),
 			automatic_installation = false,
 			handlers = {
 				function(server_name)
