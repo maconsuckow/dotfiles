@@ -19,6 +19,11 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = tr
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Go to Left Window", remap = true })
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Go to Lower Window", remap = true })
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Go to Upper Window", remap = true })
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Go to Right Window", remap = true })
+
 -- better indenting
 vim.keymap.set("v", "<", "<gv", { desc = "Indent Left" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent Right" })
