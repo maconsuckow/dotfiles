@@ -8,10 +8,6 @@ return {
 	},
 	version = "1.*",
 	opts = {
-		setup = {
-			default = "blink",
-		},
-
 		keymap = { preset = "default" },
 
 		appearance = {
@@ -57,16 +53,14 @@ return {
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer", "codeium" },
 			per_filetype = {
-				sql = { "dadbod" },
+				sql = { "lsp", "path", "snippets", "buffer", "dadbod" },
 			},
-			compat = { "codeium" },
 			providers = {
 				dadbod = {
 					name = "Dadbod",
 					module = "vim_dadbod_completion.blink",
 				},
 				codeium = {
-					kind = "Codeium",
 					name = "Codeium",
 					module = "codeium.blink",
 					async = true,

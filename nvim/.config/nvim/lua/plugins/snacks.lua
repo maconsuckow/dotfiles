@@ -150,6 +150,13 @@ return {
 			end,
 			desc = "Git Log File",
 		},
+		{
+			"<leader>gg",
+			function()
+				Snacks.lazygit()
+			end,
+			desc = "LazyGit",
+		},
 		-- Grep
 		{
 			"<leader>sb",
