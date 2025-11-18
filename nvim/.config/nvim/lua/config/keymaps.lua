@@ -4,9 +4,21 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "]e", function()
+	vim.diagnostic.jump({ severity = vim.diagnostic.severity.ERROR, count = 1 })
+end, { desc = "Next [E]rror" })
+vim.keymap.set("n", "[e", function()
+	vim.diagnostic.jump({ severity = vim.diagnostic.severity.ERROR, count = 1 })
+end, { desc = "Previous [E]rror" })
+vim.keymap.set("n", "]w", function()
+	vim.diagnostic.jump({ severity = vim.diagnostic.severity.WARN, count = 1 })
+end, { desc = "Next [W]arning" })
+vim.keymap.set("n", "[w", function()
+	vim.diagnostic.jump({ severity = vim.diagnostic.severity.WARN, count = 1 })
+end, { desc = "Previous [W]arning" })
 
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Horizontal Split" })
-vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Vertical Split" })
+vim.keymap.set("n", "<leader>_", "<C-W>s", { desc = "Vertical Split" })
 
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode", remap = true })
 

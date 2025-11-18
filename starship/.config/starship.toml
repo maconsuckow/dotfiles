@@ -1,5 +1,12 @@
 # Which is equivalent to
 # format = '$all$directory$character'
-add_newline = false
+add_newline = true
+
 format = """$directory$character"""
+
 right_format = "$hostname$git_branch$time"
+
+[character]
+success_symbol = '[➜](bold green)'
+
+[gcloud]

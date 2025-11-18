@@ -15,10 +15,11 @@ return {
 			folder = "Templates",
 		},
 
-		disable_frontmatter = true,
+		frontmatter = { enabled = true },
 	},
 	keys = {
-		{ "<leader>of", "<cmd>Obsidian follow_link<CR>", "[O]bsidian [F]ollow Link" },
-		{ "<leader>it", "<cmd>Obsidian template<CR>", "Obsidian [I]nsert [T]emplate" },
+		{ "<leader>of", "<cmd>Obsidian follow_link vsplit<CR>", "[O]bsidian [F]ollow Link" },
+		{ "<leader>ot", "<cmd>Obsidian template<CR>", "[O]bsidian Insert [T]emplate" },
+		{ "<leader>oc", "<cmd>Obsidian template<CR>", "[O]bsidian Template [C]heckbox" },
 	},
 }

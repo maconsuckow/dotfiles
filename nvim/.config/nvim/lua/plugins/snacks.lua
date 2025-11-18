@@ -187,6 +187,20 @@ return {
 			desc = "Visual selection or word",
 			mode = { "n", "x" },
 		},
+		{
+			"<leader>.",
+			function()
+				Snacks.scratch()
+			end,
+			desc = "Toggle Scratch Buffer",
+		},
+		{
+			"<leader>S",
+			function()
+				Snacks.scratch.select()
+			end,
+			desc = "Select Scratch Buffer",
+		},
 	},
 	opts = {
 		bigfile = { enabled = true },
@@ -209,6 +223,9 @@ return {
 			enabled = true,
 			sources = {
 				explorer = {
+					hidden = true,
+					ignored = true,
+					exclude = { "node_modules" },
 					replace_netrw = true,
 					layout = { preset = "default", preview = true },
 					tree = false,
