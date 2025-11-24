@@ -201,6 +201,14 @@ return {
 			end,
 			desc = "Select Scratch Buffer",
 		},
+		{
+			"<leader>gB",
+			function()
+				Snacks.gitbrowse()
+			end,
+			desc = "Git Browse",
+			mode = { "n", "v" },
+		},
 	},
 	opts = {
 		bigfile = { enabled = true },

@@ -7,7 +7,7 @@ require("items.clock")
 require("items.battery")
 require("items.network")
 require("items.volume")
-require("items.weather")
+-- require("items.weather")
 -- require("items.cpu")
 -- require("items.memory")
 
