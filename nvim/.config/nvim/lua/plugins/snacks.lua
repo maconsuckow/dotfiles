@@ -217,6 +217,16 @@ return {
 			sections = {
 				{ section = "keys", gap = 1, padding = 1 },
 				{ title = "Recent Files", section = "recent_files", indent = 2, padding = { 2, 1 } },
+				{
+					align = "center",
+					text = {
+						{
+							string.format("v%d.%d.%d", vim.version().major, vim.version().minor, vim.version().patch),
+							hl = "SnacksDashboardHeader",
+						},
+					},
+					padding = 1,
+				},
 				{ section = "startup" },
 			},
 		},

@@ -9,8 +9,8 @@ local function selectCurrentWorkspace(focusedWorkspaceName)
 			item:set({
 				icon = {
 					color = isSelected and colors.bar.bg or colors.white,
-					padding_right = isSelected and 10 or 0,
-					padding_left = isSelected and 15 or 0,
+					padding_right = isSelected and 5 or 0,
+					padding_left = isSelected and 10 or 0,
 					string = isSelected and icons.dot.filled or icons.dot.empty,
 				},
 				label = {
@@ -46,7 +46,7 @@ local function addWorkspaceItem(workspaceName)
 		},
 		background = {
 			border_width = 0,
-			height = 20,
+			height = 25,
 		},
 	})
 

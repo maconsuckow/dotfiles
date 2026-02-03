@@ -82,14 +82,14 @@ key-mapping.preset = 'qwerty'
     outer.right = 8
 
 [workspace-to-monitor-force-assignment]
-    1 = '24N1' # Terminal (Ghostty)
-    2 = ['MNN', '24N1'] # Browser (Chrome)
+    1 = ['24N1', 'ES-G27F4Q'] # Terminal (Ghostty)
+    2 = ['MNN', '24N1', 'ES-G27F4Q'] # Browser (Chrome)
     3 = 'built-in' # Communication (Slack, Zoom, Outlook)
-    4 = ['MNN', '24N1'] # Database (TablePlus)
-    5 = ['MNN', '24N1'] # API (Postman, Insomnia)
+    4 = ['MNN', '24N1', 'ES-G27F4Q'] # Database (TablePlus)
+    5 = ['MNN', '24N1', 'ES-G27F4Q'] # API (Postman, Insomnia)
     6 = 'built-in' # Spotify
     7 = 'built-in' # MacOS (Finder, Settings)
-    8 = ['MNN', '24N1'] # Obsidian
+    8 = ['MNN', '24N1', 'ES-G27F4Q'] # Obsidian
 
     # 1 = [ 'S24D300 \(1\)', '24N1' ]
     # 5 = ['S24D300 \(2\)', 'MNN', '24N1']

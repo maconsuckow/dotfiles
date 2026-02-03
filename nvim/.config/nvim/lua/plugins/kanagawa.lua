@@ -48,12 +48,16 @@ return {
 					["@markup.italic.markdown_inline"] = { link = "Exception" }, -- *italic*
 					["@markup.raw.markdown_inline"] = { link = "String" }, -- `code`
 					["@markup.list.markdown"] = { link = "Function" }, -- + list
-					["@markup.quote.markdown"] = { link = "Error" }, -- > blockcode
+					["@markup.quote.markdown"] = { link = "Comment" }, -- > blockcode
+					-- Comment = { bg = "none" },
+					-- Function = { bg = "none" },
+					Keyword = { bg = "none" },
+					Statement = { bg = "none" },
 					["@markup.list.checked.markdown"] = { link = "WarningMsg" }, -- - [X] checked list item
 				}
 			end,
 		})
 
-		vim.cmd("colorscheme kanagawa-dragon")
+		-- vim.cmd("colorscheme kanagawa-dragon")
 	end,
 }

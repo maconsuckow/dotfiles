@@ -1,6 +1,6 @@
 -- require("items.apple")
-require("items.front_app")
 require("items.aerospace")
+require("items.front_app")
 
 -- require("items.media")
 require("items.clock")

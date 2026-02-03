@@ -1,7 +1,8 @@
-# theme = Kanagawa Dragon
+theme = kanso
 
-background-opacity = 80
-background-blur-radius = 20
+# background = #1f1d2e
+background-opacity = 0.85
+background-blur-radius = 50
 
 macos-titlebar-style = hidden
 macos-window-shadow = false
