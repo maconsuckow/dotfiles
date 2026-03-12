@@ -42,9 +42,13 @@ return {
 			lua_ls = {},
 			vtsls = {
 				settings = {
+					vtsls = {
+						autoUseWorkspaceTsdk = true,
+					},
 					javascript = {
 						preferences = {
 							importModuleSpecifier = "relative",
+							importModuleSpecifierEnding = "minimal",
 						},
 					},
 					typescript = {
@@ -58,6 +62,7 @@ return {
 						},
 						preferences = {
 							importModuleSpecifier = "relative",
+							importModuleSpecifierEnding = "minimal",
 						},
 					},
 				},

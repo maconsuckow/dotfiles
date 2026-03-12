@@ -151,7 +151,7 @@ return {
 			desc = "Git Log File",
 		},
 		{
-			"<leader>gg",
+			"<leader>lg",
 			function()
 				Snacks.lazygit()
 			end,

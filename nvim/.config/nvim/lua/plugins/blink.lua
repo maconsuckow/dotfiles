@@ -8,22 +8,16 @@ return {
 	},
 	version = "1.*",
 	opts = {
-		keymap = { preset = "default" },
-
 		appearance = {
 			nerd_font_variant = "mono",
 			kind_icons = {
 				Keyword = " ",
 				Function = " ",
 				Variable = " ",
-				Snippet = " ",
-				Codeium = " ",
-				codeium = " ",
-				Windsurf = " ",
-				windsurf = " ",
+				codecompanion = "",
+				CodeCompanion = "",
 			},
 		},
-
 		completion = {
 			accept = {
 				auto_brackets = {
@@ -51,19 +45,19 @@ return {
 			},
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "codeium" },
+			default = { "codecompanion", "lsp", "path", "snippets", "buffer", "codecompanion" },
 			per_filetype = {
 				sql = { "lsp", "path", "snippets", "buffer", "dadbod" },
 			},
 			providers = {
+				codecompanion = {
+					name = "CodeCompanion",
+					module = "codecompanion.providers.completion.blink",
+					score_offset = 100,
+				},
 				dadbod = {
 					name = "Dadbod",
 					module = "vim_dadbod_completion.blink",
-				},
-				codeium = {
-					name = "Codeium",
-					module = "codeium.blink",
-					async = true,
 				},
 			},
 		},

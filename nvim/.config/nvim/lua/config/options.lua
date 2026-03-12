@@ -80,5 +80,9 @@ vim.opt.conceallevel = 1
 vim.opt.guifont = "JetBrainsMono Nerd Font"
 vim.opt.guifontwide = "JetBrainsMono Nerd Font"
 
+vim.g.ai_cmp = true
+
 -- Enable 24-bit RGB color in the TUI
 vim.opt.termguicolors = true
+
+vim.o.cursorline = true
