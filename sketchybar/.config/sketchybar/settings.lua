@@ -3,6 +3,7 @@ return {
   font = {
     text = "JetBrainsMono Nerd Font",    -- Used for text
     numbers = "JetBrainsMono Nerd Font", -- Used for numbers
+    app_icons = "sketchybar-app-font",   -- Used for app icons
     style_map = {
       ["Regular"] = "Regular",
       ["Semibold"] = "Medium",

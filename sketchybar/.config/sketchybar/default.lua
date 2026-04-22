@@ -5,11 +5,7 @@ local colors = require("colors")
 sbar.default({
   updates = "when_shown",
   icon = {
-    font = {
-      family = "sketchybar-app-font",
-      style = "Regular",
-      size = 14.0,
-    },
+    font = "sketchybar-app-font:Regular:14.0",
     color = colors.white,
     padding_left = 10,
     -- padding_right = 10,
@@ -54,7 +50,7 @@ sbar.default({
     },
     -- blur_radius = 50,
   },
-  padding_left = 5,
-  padding_right = 5,
+  padding_left = 2,
+  padding_right = 2,
   scroll_texts = true,
 })

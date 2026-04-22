@@ -9,27 +9,58 @@ local battery = sbar.add("item", "widgets.battery", {
       style = settings.font.style_map["Regular"],
       size = 19.0,
     },
-    padding_left = 10
+    padding_left = 6,
+    padding_right = 6,
   },
-  label = { font = { family = settings.font.numbers }, padding_right = 10 },
-  update_freq = 180,
+  label = { 
+    drawing = false,
+  },
+  update_freq = 60,
   popup = { align = "center" },
   background = {
-    color = colors.bar.bg
+    color = colors.transparent,
   }
+})
+
+local battery_details = sbar.add("item", {
+  position = "popup." .. battery.name,
+  label = {
+    string = "Battery Details",
+    width = 200,
+    align = "center",
+  },
+})
+
+local charge_status = sbar.add("item", {
+  position = "popup." .. battery.name,
+  background = { height = 18 },
+  icon = { string = "Charge:", width = 100, align = "left" },
+  label = {
+    string = "??%",
+    width = 100,
+    align = "right",
+  },
 })
 
 local remaining_time = sbar.add("item", {
   position = "popup." .. battery.name,
-  -- icon = {
-  -- 	string = "Time remaining:",
-  -- 	width = 100,
-  -- 	align = "left",
-  -- },
+  background = { height = 18 },
+  icon = { string = "Remaining:", width = 100, align = "left" },
   label = {
-    string = "Time Remaining: ??:??h",
+    string = "??:??h",
     width = 100,
-    align = "center",
+    align = "right",
+  },
+})
+
+local power_source = sbar.add("item", {
+  position = "popup." .. battery.name,
+  background = { height = 18 },
+  icon = { string = "Source:", width = 100, align = "left" },
+  label = {
+    string = "???",
+    width = 100,
+    align = "right",
   },
 })
 
@@ -65,18 +96,14 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
       end
     end
 
-    local lead = ""
-    if found and charge < 10 then
-      lead = "0"
-    end
-
     battery:set({
       icon = {
         string = icon,
         color = color,
       },
-      label = { string = lead .. label },
     })
+    
+    charge_status:set({ label = label })
   end)
 end)
 
@@ -87,8 +114,16 @@ local function toggle_details()
   if drawing == "off" then
     sbar.exec("pmset -g batt", function(batt_info)
       local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
-      local label = found and remaining .. " Hours" or "N/A"
+      local label = found and remaining .. "h" or "N/A"
+      
+      local charging = batt_info:find("AC Power")
+      if charging then
+        local found_to_full, _, to_full = batt_info:find(" (%d+:%d+) until full")
+        label = found_to_full and to_full .. " until full" or "Charging"
+      end
+      
       remaining_time:set({ label = label })
+      power_source:set({ label = charging and "AC Power" or "Battery" })
     end)
   end
 end

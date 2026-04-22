@@ -5,146 +5,101 @@ local defaultDevice = "en0"
 
 local wifi = sbar.add("item", "wifi", {
 	position = "right",
-	label = { drawing = true },
+	label = { 
+		drawing = false,
+	},
 	icon = {
 		font = {
-			family = "JetBrainsMono Nerd Font",
 			style = "Regular",
 			size = 16,
 		},
-		padding_left = 10,
-		padding_right = 0,
+		padding_left = 6,
+		padding_right = 6,
 	},
 	popup = { align = "center" },
 	background = {
-		color = colors.bar.bg,
+		color = colors.transparent,
+	},
+})
+
+local ssid = sbar.add("item", {
+	position = "popup." .. wifi.name,
+	background = {
+		height = 18,
+	},
+	icon = { drawing = false },
+	label = {
+		string = "SSID: Not Connected",
+		width = popupWidth,
+		align = "center",
 	},
 })
 
 local hostname = sbar.add("item", {
 	position = "popup." .. wifi.name,
 	background = {
-		height = 16,
+		height = 18,
 	},
-	icon = {
-		font = {
-			family = "JetBrainsMono Nerd Font",
-			style = "Regular",
-			size = 16,
-		},
-		align = "left",
-		string = "Hostname:",
-		width = popupWidth / 2,
-	},
+	icon = { drawing = false },
 	label = {
-		max_chars = 20,
-		string = "????????????",
-		width = popupWidth / 2,
-		align = "right",
+		string = "Hostname: ????????????",
+		width = popupWidth,
+		align = "center",
 	},
 })
 
 local ip = sbar.add("item", {
 	position = "popup." .. wifi.name,
 	background = {
-		height = 16,
+		height = 18,
 	},
-	icon = {
-		align = "left",
-		string = "IP:",
-		width = popupWidth / 2,
-		font = {
-			family = "JetBrainsMono Nerd Font",
-			style = "Regular",
-			size = 16,
-		},
-	},
+	icon = { drawing = false },
 	label = {
-		align = "right",
-		string = "???.???.???.???",
-		width = popupWidth / 2,
+		string = "IP: ???.???.???.???",
+		width = popupWidth,
+		align = "center",
 	},
 })
 
 local router = sbar.add("item", {
 	position = "popup." .. wifi.name,
 	background = {
-		height = 16,
+		height = 18,
 	},
-	icon = {
-		align = "left",
-		string = "Router:",
-		width = popupWidth / 2,
-		font = {
-			family = "JetBrainsMono Nerd Font",
-			style = "Regular",
-			size = 16,
-		},
-	},
+	icon = { drawing = false },
 	label = {
-		align = "right",
-		string = "???.???.???.???",
-		width = popupWidth / 2,
+		string = "Router: ???.???.???.???",
+		width = popupWidth,
+		align = "center",
 	},
 })
 
 local function setDetails()
-	wifi:set({
-		icon = {
-			font = {
-				family = "JetBrainsMono Nerd Font",
-				style = "Regular",
-				size = 16,
-			},
-			string = icons.wifi.disconnected,
-			color = colors.magenta,
-		},
-	})
-
 	local ipCommand = "ipconfig getifaddr " .. defaultDevice
-	sbar.exec(ipCommand, function(ip)
-		local ipConnected = not (ip == "")
+	sbar.exec(ipCommand, function(ip_addr)
+		local ipConnected = not (ip_addr == "")
 
-		local wifiIcon
-		local wifiColor
-		local wifiName
+		local wifiIcon = icons.wifi.disconnected
+		local wifiColor = colors.white
+		local wifiName = "Not Connected"
 
-		if ipConnected and defaultDevice == "en0" then
-			wifiIcon = icons.wifi.connected
-			wifiColor = colors.white
-		elseif ipConnected and defaultDevice == "en8" then
-			wifiIcon = icons.ethernet.connected
-			label = "disconnected"
-			wifiColor = colors.white
+		if ipConnected then
+			if defaultDevice == "en0" then
+				wifiIcon = icons.wifi.connected
+				sbar.exec("ipconfig getsummary en0 | awk -F ' SSID : '  '/ SSID : / {print $2}'", function(ssid_name)
+					wifiName = ssid_name:gsub("^%s*(.-)%s*$", "%1")
+					wifi:set({ icon = { string = wifiIcon, color = wifiColor } })
+					ssid:set({ label = { string = "SSID: " .. wifiName } })
+				end)
+			else
+				wifiIcon = icons.ethernet.connected
+				wifiName = "Ethernet"
+				wifi:set({ icon = { string = wifiIcon, color = wifiColor } })
+				ssid:set({ label = { string = "SSID: " .. wifiName } })
+			end
 		else
-			wifiIcon = icons.wifi.disconnected
-			wifiColor = colors.white
-		end
-
-		if defaultDevice == "en0" and ipConnected then
-			sbar.exec("ipconfig getsummary en0 | awk -F ' SSID : '  '/ SSID : / {print $2}'", function(ssid)
-				wifiName = ssid:gsub("%s", "") -- Remove leading/trailing whitespace
-				wifi:set({
-					icon = {
-						string = wifiIcon,
-						color = wifiColor,
-					},
-					label = {
-						string = wifiName,
-					},
-				})
-			end)
-		else
-			-- If not connected or not a Wi-Fi device, set a default label
-			wifi:set({
-				icon = {
-					string = wifiIcon,
-					color = wifiColor,
-				},
-				label = {
-					string = "Not Connected",
-				},
-			})
+			wifi:set({ icon = { string = wifiIcon, color = wifiColor } })
+			ssid:set({ label = { string = "SSID: " .. wifiName } })
 		end
 	end)
 end
@@ -159,13 +114,13 @@ local function toggleDetails()
 	if shouldDrawDetails then
 		wifi:set({ popup = { drawing = true } })
 		sbar.exec("networksetup -getcomputername", function(result)
-			hostname:set({ label = result })
+			hostname:set({ label = "Hostname: " .. result })
 		end)
 		sbar.exec("ipconfig getifaddr " .. defaultDevice, function(result)
-			ip:set({ label = result })
+			ip:set({ label = "IP: " .. result })
 		end)
 		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Router: ' '/^Router: / {print $2}'", function(result)
-			router:set({ label = result })
+			router:set({ label = "Router: " .. result })
 		end)
 	else
 		hideDetails()

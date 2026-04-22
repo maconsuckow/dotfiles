@@ -1,12 +1,12 @@
-local icons = require("icons")
-local icon_map = require("icon_map")
 local colors = require("colors")
+local app_icons = require("app_icons")
 
 local front_app = sbar.add("item", "front_app", {
 	position = "left",
 	icon = {
 		padding_left = 10,
 		padding_right = 0,
+    font = "sketchybar-app-font:Regular:14.0",
 	},
 	label = {
 		padding_right = 10,
@@ -16,48 +16,14 @@ local front_app = sbar.add("item", "front_app", {
 	},
 })
 
-front_app:subscribe({ "front_app_switched" }, function(env)
-	local icon = {
-		string = icons.applications.default,
-		font = {
-			family = "JetBrainsMono Nerd Font",
-			style = "Regular",
-		},
-	}
-
-	if env.INFO == "Activity Monitor" then
-		icon = {
-			string = icon_map["Activity Monitor"],
-			font = {
-				family = "sketchybar-app-font",
-				style = "Regular",
-			},
-		}
-	end
-
-	if env.INFO == "Chrome" then
-		icon = {
-			string = icon_map["Google Chrome"],
-			font = {
-				family = "sketchybar-app-font",
-				style = "Regular",
-			},
-		}
-	end
-
-	local found = icon_map[env.INFO]
-	if found then
-		icon = {
-			string = icon_map[env.INFO],
-			font = {
-				family = "sketchybar-app-font",
-				style = "Regular",
-			},
-		}
-	end
+front_app:subscribe({ "front_app_switched", "forced" }, function(env)
+	local icon = app_icons.get_icon(env.INFO or "")
 
 	front_app:set({
-		icon = icon,
-		label = env.INFO,
+		icon = { 
+			string = icon,
+      font = "sketchybar-app-font:Regular:14.0",
+		},
+		label = env.INFO or "",
 	})
 end)

@@ -15,6 +15,7 @@ return {
 		database = "",
 		spotify = "󰓇",
 		terminal = "",
+		ghostty = "󰊠",
 		finder = "󰀶",
 		process = "",
 		default = "",
@@ -71,5 +72,9 @@ return {
 	dot = {
 		empty = "",
 		filled = "",
+	},
+	layout = {
+		tiling = "􀏝",
+		floating = "􀢌",
 	},
 }
