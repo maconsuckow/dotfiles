@@ -4,7 +4,7 @@ return {
 	desc = "Debugging support. Requires language specific adapters to be configured. (see lang extras)",
 
 	dependencies = {
-		{ "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
+		{ "igorlfs/nvim-dap-view", opts = {} },
 		{
 			"williamboman/mason.nvim",
 			opts = function(_, opts)
@@ -99,20 +99,6 @@ return {
 			desc = "Run Last",
 		},
 		{
-			"<leader>dO",
-			function()
-				require("dap").step_out()
-			end,
-			desc = "Step Out",
-		},
-		{
-			"<leader>do",
-			function()
-				require("dap").step_over()
-			end,
-			desc = "Step Over",
-		},
-		{
 			"<leader>dP",
 			function()
 				require("dap").pause()
@@ -150,64 +136,27 @@ return {
 		{
 			"<leader>du",
 			function()
-				require("dapui").toggle()
+				require("dap-view").toggle()
 			end,
-			desc = "Toggle DAP UI",
-		},
-		{
-			"<leader>de",
-			function()
-				require("dapui").eval()
-			end,
-			desc = "Evaluate Expression",
+			desc = "Toggle DAP View",
 		},
 	},
 
 	config = function()
 		local dap = require("dap")
-		local dapui = require("dapui")
 
-		dapui.setup({
-			-- For a good default layout, consider something like this:
-			elements = {
-				{
-					"scopes",
-					"breakpoints",
-					"stacks",
-					"watches",
-				},
-				{
-					"repl",
-					"console",
-				},
-			},
-			layouts = {
-				{
-					elements = {
-						"scopes",
-						"breakpoints",
-					},
-					position = "left",
-					size = 40,
-				},
-				{ elements = {
-					"repl",
-				}, position = "bottom", size = 15 },
-			},
-			-- You'll want to customize this to your preference.
-			-- Refer to :help dapui.txt for full options.
-		})
-
-		-- Autocmds to open/close DAP UI with debug sessions
+		-- Autocmds to open/close DAP View with debug sessions
 		dap.listeners.after.event_initialized["dapui_config"] = function()
-			dapui.open()
+			require("dap-view").open()
 		end
-		dap.listeners.before.event_terminated["dapui_config"] = function()
-			dapui.close()
-		end
-		dap.listeners.before.event_exited["dapui_config"] = function()
-			dapui.close()
-		end
+		-- Terminated/Exited events are typically handled by the user or automatically by dap-view if configured,
+		-- but we can leave these listeners if we want specific behavior.
+		-- dap.listeners.before.event_terminated["dapui_config"] = function()
+		-- 	require("dap-view").close()
+		-- end
+		-- dap.listeners.before.event_exited["dapui_config"] = function()
+		-- 	require("dap-view").close()
+		-- end
 
 		vim.fn.sign_define("DapStopped", {
 			text = "󰁕 ",

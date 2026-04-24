@@ -16,20 +16,15 @@ after-login-command = []
 # Run Sketchybar together with AeroSpace
 # sketchbar has a built-in detection of already running process,
 # so it won't be run twice on AeroSpace restart
+
 after-startup-command = [
-  'exec-and-forget sketchybar',
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
+   'exec-and-forget sketchybar',
+   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
 ]
 
 # Notify Sketchybar about workspace change
-# exec-on-workspace-change = ['/bin/bash', '-c',
-#     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
-# ]
-exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-]
+exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
+
 # Start AeroSpace at login
 start-at-login = true
 
@@ -74,12 +69,21 @@ key-mapping.preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-    inner.horizontal = 8
-    inner.vertical = 8
-    outer.left = 8
-    outer.bottom = 8
-    outer.top = [{ monitor.main = 16 }, 8]
-    outer.right = 8
+    inner.horizontal = 10
+    inner.vertical = 10
+    outer.left = 10
+    outer.bottom = 10
+    outer.top = [{ monitor.main = 32 }, 10]
+    outer.right = 10
+ 
+# [gaps]
+#    2 inner.horizontal = 10
+#    3 inner.vertical = 10
+#    4 # This is the key line:
+#    5 outer.top = 70  # Adjust this to be slightly more than the total SketchyBar depth
+#    6 outer.left = 10
+#    7 outer.bottom = 10
+#    8 outer.right = 10
 
 [workspace-to-monitor-force-assignment]
     1 = ['24N1', 'ES-G27F4Q'] # Terminal (Ghostty)
@@ -196,3 +200,7 @@ key-mapping.preset = 'qwerty'
     cmd-shift-j = ['join-with down', 'mode main']
     cmd-shift-k = ['join-with up', 'mode main']
     cmd-shift-l = ['join-with right', 'mode main']
+
+[[on-window-detected]]
+if.app-id = 'com.tinyapp.TablePlus'
+run = ['layout floating', 'move-node-to-workspace 4']

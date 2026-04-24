@@ -9,7 +9,7 @@ vim.opt.tabstop = 2 -- How many spaces are shown per Tab
 -- vim.opt.softtabstop = 4 -- How many spaces are applied when pressing Tab
 
 vim.opt.smarttab = true
-vim.opt.smartindent = true
+vim.opt.smartindent = false
 vim.opt.autoindent = true -- Keep identation from previous line
 
 -- Enable break indent
@@ -86,3 +86,17 @@ vim.g.ai_cmp = true
 vim.opt.termguicolors = true
 
 vim.o.cursorline = true
+
+-- Monkeypatch for Neovim 0.12 treesitter bug
+local _get_range = vim.treesitter.get_range
+vim.treesitter.get_range = function(node, source, metadata)
+  if not node or (type(node) ~= 'userdata' and type(node) ~= 'table') or not node.range then
+    if metadata and metadata.range then
+        return _get_range(node, source, metadata)
+    end
+    return { 0, 0, 0, 0 }
+  end
+  local ok, res = pcall(_get_range, node, source, metadata)
+  if ok then return res end
+  return { 0, 0, 0, 0 }
+end

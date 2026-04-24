@@ -1,6 +1,6 @@
 return {
 	"nvim-mini/mini.pairs",
-	event = "VeryLazy",
+	enabled = true,
 	opts = {
 		modes = { insert = true, command = true, terminal = false },
 		-- skip autopair when next character is one of these
@@ -13,4 +13,7 @@ return {
 		-- better deal with markdown code blocks
 		markdown = true,
 	},
+	config = function(_, opts)
+		require("mini.pairs").setup(opts)
+	end,
 }

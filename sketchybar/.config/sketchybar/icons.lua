@@ -51,6 +51,9 @@ return {
 		disconnected = "􀙈",
 		router = "􁓤",
 	},
+	bluetooth = {
+		main = "󰂯",
+	},
 	ethernet = {
 		connected = "󰇄",
 	},

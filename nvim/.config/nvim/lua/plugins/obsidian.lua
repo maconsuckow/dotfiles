@@ -22,6 +22,11 @@ return {
 			template = "Templates/Daily Note",
 		},
 
+		completion = {
+			nvim_cmp = false, -- Changed to false to prevent the secondary menu
+			min_chars = 2,
+		},
+
 		frontmatter = {
 			enabled = false,
 			-- func = function(note)

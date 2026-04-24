@@ -1,10 +1,10 @@
 return {
 	"nvim-treesitter/nvim-treesitter-textobjects",
-	enable = false,
+	enabled = true,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 	},
-	init = function()
+	config = function()
 		local config = require("nvim-treesitter.configs")
 		config.setup({
 			textobjects = {
@@ -52,10 +52,10 @@ return {
 				swap = {
 					enable = true,
 					swap_next = {
-						["<leader>a"] = { query = "@parameter.inner", desc = "Swap with next parameter" },
+						["<leader>px"] = { query = "@parameter.inner", desc = "Swap with next parameter" },
 					},
 					swap_previous = {
-						["<leader>A"] = "@parameter.inner",
+						["<leader>pX"] = "@parameter.inner",
 					},
 				},
 			},

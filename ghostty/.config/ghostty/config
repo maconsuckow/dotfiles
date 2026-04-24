@@ -1,8 +1,15 @@
 theme = kanso
 
 # background = #1f1d2e
-background-opacity = 0.85
-background-blur-radius = 50
+# background-opacity = 0.85
+# background-blur-radius = 50
+
+# Semi-transparent background
+background-opacity = 0.8
+# Intense blur (requires macOS 14+)
+background-blur-radius = 20
+# Remove the title bar for a truly seamless tiling look
+window-decoration = false
 
 macos-titlebar-style = hidden
 macos-window-shadow = false
@@ -13,3 +20,16 @@ window-padding-balance = true
 
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 14
+font-feature = "calt"
+font-feature = "liga"
+# Adjust line height to give text more "breathing room"
+# adjust-cell-height = 15%
+
+
+# Smooth cursor movement (makes it feel fluid, like an iPad)
+cursor-style = block
+cursor-style-blink = true
+# Enable "Natural" scrolling
+mouse-scroll-multiplier = 1
+# Highlight the line your cursor is on
+# cursor-invert-section-color = true

@@ -16,51 +16,83 @@ local battery = sbar.add("item", "widgets.battery", {
     drawing = false,
   },
   update_freq = 60,
-  popup = { align = "center" },
+  popup = { align = "right" },
   background = {
     color = colors.transparent,
   }
 })
 
-local battery_details = sbar.add("item", {
+local battery_header = sbar.add("item", {
   position = "popup." .. battery.name,
+  icon = { drawing = false },
   label = {
     string = "Battery Details",
-    width = 200,
+    width = 250,
     align = "center",
+    font = { family = settings.font.text, style = "Bold", size = 14 },
+  },
+  background = {
+    drawing = true,
+    height = 1,
+    color = colors.bg2,
+    y_offset = -12,
   },
 })
 
 local charge_status = sbar.add("item", {
   position = "popup." .. battery.name,
-  background = { height = 18 },
-  icon = { string = "Charge:", width = 100, align = "left" },
+  background = { drawing = false, height = 22 },
+  icon = {
+    string = "Charge",
+    width = 100,
+    align = "left",
+    padding_left = 15,
+    font = { family = settings.font.text, style = "Bold", size = 12 },
+  },
   label = {
     string = "??%",
-    width = 100,
+    width = 150,
     align = "right",
+    padding_right = 15,
+    font = { family = settings.font.text, style = "Regular", size = 12 },
   },
 })
 
 local remaining_time = sbar.add("item", {
   position = "popup." .. battery.name,
-  background = { height = 18 },
-  icon = { string = "Remaining:", width = 100, align = "left" },
+  background = { drawing = false, height = 22 },
+  icon = {
+    string = "Remaining",
+    width = 100,
+    align = "left",
+    padding_left = 15,
+    font = { family = settings.font.text, style = "Bold", size = 12 },
+  },
   label = {
     string = "??:??h",
-    width = 100,
+    width = 150,
     align = "right",
+    padding_right = 15,
+    font = { family = settings.font.text, style = "Regular", size = 12 },
   },
 })
 
 local power_source = sbar.add("item", {
   position = "popup." .. battery.name,
-  background = { height = 18 },
-  icon = { string = "Source:", width = 100, align = "left" },
+  background = { drawing = false, height = 22 },
+  icon = {
+    string = "Source",
+    width = 100,
+    align = "left",
+    padding_left = 15,
+    font = { family = settings.font.text, style = "Bold", size = 12 },
+  },
   label = {
     string = "???",
-    width = 100,
+    width = 150,
     align = "right",
+    padding_right = 15,
+    font = { family = settings.font.text, style = "Regular", size = 12 },
   },
 })
 
@@ -109,9 +141,8 @@ end)
 
 local function toggle_details()
   local drawing = battery:query().popup.drawing
-  battery:set({ popup = { drawing = "toggle" } })
-
   if drawing == "off" then
+    battery:set({ popup = { drawing = true } })
     sbar.exec("pmset -g batt", function(batt_info)
       local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
       local label = found and remaining .. "h" or "N/A"
@@ -125,7 +156,12 @@ local function toggle_details()
       remaining_time:set({ label = label })
       power_source:set({ label = charging and "AC Power" or "Battery" })
     end)
+  else
+    battery:set({ popup = { drawing = false } })
   end
 end
 
 battery:subscribe("mouse.clicked", toggle_details)
+battery:subscribe("mouse.exited.global", function()
+  battery:set({ popup = { drawing = false } })
+end)

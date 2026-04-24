@@ -1,7 +1,12 @@
 return {
-	"MeanderingProgrammer/render-markdown.nvim",
-	-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
-	-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
-	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-	opts = {},
+  "MeanderingProgrammer/render-markdown.nvim",
+  dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+  opts = {
+    code = {
+      -- Change this to 'none' to disable the background bar
+      style = "none",
+      -- Alternatively, you can disable just the width expansion
+      width = "block",
+    },
+  },
 }

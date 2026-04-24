@@ -10,52 +10,6 @@ local function clean(str)
     return str:gsub("^%s*(.-)%s*$", "%1")
 end
 
-local function updateWorkspaceItem(workspaceName, focusedWorkspaceName)
-    local spaceName = "workspaces." .. workspaceName
-    local isSelected = (workspaceName == focusedWorkspaceName)
-    
-    if isSelected then
-        sbar.exec(AEROSPACE_PATH .. " list-windows --workspace " .. workspaceName .. " --format '%{app-name}'", function(apps)
-            local icon_line = ""
-            local seen_apps = {}
-            for app in apps:gmatch("[^\r\n]+") do
-                if not seen_apps[app] then
-                    local icon = app_icons.get_icon(app)
-                    if icon_line == "" then
-                        icon_line = icon
-                    else
-                        icon_line = icon_line .. " " .. icon
-                    end
-                    seen_apps[app] = true
-                end
-            end
-            
-            if icon_line == "" then icon_line = workspaceName end
-
-            spaces[spaceName]:set({
-                label = {
-                    string = icon_line,
-                    color = colors.bar.bg,
-                    font = "sketchybar-app-font:Regular:14.0",
-                },
-                background = { color = colors.white, drawing = true },
-            })
-        end)
-    else
-        sbar.exec(AEROSPACE_PATH .. " list-windows --workspace " .. workspaceName, function(windows)
-            local has_windows = (windows ~= "")
-            spaces[spaceName]:set({
-                label = {
-                    string = workspaceName,
-                    color = has_windows and colors.white or colors.with_alpha(colors.white, 0.5),
-                    font = { family = settings.font.text, style = "Bold", size = 12.0 },
-                },
-                background = { drawing = false },
-            })
-        end)
-    end
-end
-
 local function updateWorkspacesBatch(focusedName)
     sbar.exec(AEROSPACE_PATH .. " list-windows --all --format '%{workspace}|%{app-name}'", function(windowsOutput)
         local workspace_apps = {}
@@ -84,15 +38,21 @@ local function updateWorkspacesBatch(focusedName)
                     if icon_line == "" then icon_line = icon else icon_line = icon_line .. " " .. icon end
                 end
 
-                if icon_line == "" then icon_line = workspaceName end
+                local font = "sketchybar-app-font:Regular:14.0"
+                if icon_line == "" then 
+                    icon_line = workspaceName 
+                    font = { family = settings.font.text, style = "Bold", size = 12.0 }
+                end
 
                 item:set({
                     label = {
                         string = icon_line,
-                        color = colors.bar.bg,
-                        font = "sketchybar-app-font:Regular:14.0",
+                        color = colors.white,
+                        font = font,
+                        padding_left = 5,
+                        padding_right = 5,
                     },
-                    background = { color = colors.white, drawing = true },
+                    background = { drawing = false },
                 })
             else
                 local has_windows = next(apps) ~= nil
@@ -101,6 +61,8 @@ local function updateWorkspacesBatch(focusedName)
                         string = workspaceName,
                         color = has_windows and colors.white or colors.with_alpha(colors.white, 0.5),
                         font = { family = settings.font.text, style = "Bold", size = 12.0 },
+                        padding_left = 5,
+                        padding_right = 5,
                     },
                     background = { drawing = false },
                 })
@@ -116,12 +78,12 @@ local function addWorkspaceItem(workspaceName)
         icon = { drawing = false },
         label = {
             font = { family = settings.font.text, style = "Bold", size = 12 },
-            padding_left = 4,
-            padding_right = 4,
+            padding_left = 5,
+            padding_right = 5,
         },
         background = {
-            corner_radius = 6,
-            height = 22,
+            corner_radius = 10,
+            height = 26,
         },
     })
 
@@ -148,10 +110,14 @@ local function createWorkspaces()
 
         sbar.add("bracket", "aerospace.bracket", bracket_items, {
             background = { 
-                color = colors.bar.bg,
-                border_width = 2,
+                color = colors.bg1,
+                border_width = 1,
                 border_color = colors.bar.border,
+                corner_radius = 12,
+                height = 30,
             },
+            padding_left = 2,
+            padding_right = 2,
         })
 
         -- Initial update for all items

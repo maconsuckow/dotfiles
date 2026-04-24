@@ -151,7 +151,7 @@ return {
 			desc = "Git Log File",
 		},
 		{
-			"<leader>lg",
+			"<leader>gg",
 			function()
 				Snacks.lazygit()
 			end,
@@ -235,7 +235,7 @@ return {
 			tree = false,
 			focus = "input",
 		},
-		indent = { enabled = true },
+		indent = { enabled = false },
 		input = { enabled = true },
 		picker = {
 			enabled = true,

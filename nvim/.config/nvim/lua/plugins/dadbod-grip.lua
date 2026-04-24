@@ -1,6 +1,7 @@
 return {
 	"joryeugene/dadbod-grip.nvim",
 	version = "*",
+	enabled = false,
 	dependencies = {
 		{ "tpope/vim-dadbod", lazy = true },
 		{ "kristijanhusak/vim-dadbod-completion", ft = { "sql" }, lazy = true },
