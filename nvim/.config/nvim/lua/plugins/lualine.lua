@@ -1,106 +1,73 @@
-local custom_kanagawa = {}
-custom_kanagawa.normal = {
-	a = { bg = "#717C7C", fg = "#0d0c0c" },
-	b = { bg = "#252535", fg = "#717C7C" },
-	c = { bg = "NONE", fg = "#c5c9c5" },
-}
-
-custom_kanagawa.insert = {
-	a = { bg = "#87a987", fg = "#181616" },
-	b = { bg = "#252535", fg = "#87a987" },
-}
-
-custom_kanagawa.command = {
-	a = { bg = "#c4746e", fg = "#181616" },
-	b = { bg = "#252535", fg = "#c4746e" },
-}
-
-custom_kanagawa.visual = {
-	a = { bg = "#8992a7", fg = "#181616" },
-	b = { bg = "#252535", fg = "#8992a7" },
-}
-
-custom_kanagawa.replace = {
-	a = { bg = "#b6927b", fg = "#181616" },
-	b = { bg = "#181616", fg = "#b6927b" },
-}
-
-custom_kanagawa.inactive = {
-	a = { bg = "#0d0c0c", fg = "#C8C093" },
-	b = { bg = "#0d0c0c", fg = "#C8C093", gui = "bold" },
-	c = { bg = "#0d0c0c", fg = "#C8C093" },
-}
-
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons", "yavorski/lualine-macro-recording.nvim" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		"yavorski/lualine-macro-recording.nvim",
+	},
 	opts = {
 		options = {
-			theme = custom_kanagawa,
-			custom_separators = { right = "--", left = "--" },
-			section_separators = { right = "", left = "" },
-			disabled_filetypes = { statusline = { "dashboard", "Lazy" } },
+			-- Switch to 'auto' to match gruvbox-material automatically
+			theme = "auto",
+			component_separators = { left = "│", right = "│" },
+			section_separators = { left = "", right = "" },
+			disabled_filetypes = { statusline = { "dashboard", "Lazy", "alpha" } },
 			globalstatus = true,
 		},
 		sections = {
 			lualine_a = {
-				{ "mode", separator = { left = "", right = "" }, right_padding = 2 },
+				{ "mode", separator = { left = "" }, right_padding = 2 },
 			},
 			lualine_b = {
-				{ "branch", separator = { right = "" } },
+				{ "branch", icon = "󰊢" },
 				{
 					"diff",
-					separator = { right = "" },
-					symbols = {
-						added = " ",
-						modified = " ",
-						removed = " ",
-					},
+					symbols = { added = " ", modified = " ", removed = " " },
 				},
-				-- {
-				--   "diagnostics",
-				--   symbols = {
-				--     error = icons.diagnostics.Error,
-				--     warn = icons.diagnostics.Warn,
-				--     info = icons.diagnostics.Info,
-				--     hint = icons.diagnostics.Hint,
-				--   },
-				--   colored = false,
-				--   separator = { left = "", right = "" },
-				-- },
 			},
 			lualine_c = {
 				{
 					"filename",
-					file_status = true, -- Displays file status (readonly status, modified status)
-					newfile_status = false, -- Display new file status (new file means no write after created)
-					path = 1, -- 0: Just the filename
-					-- 1: Relative path
-					-- 2: Absolute path
-					-- 3: Absolute path, with tilde as the home directory
-					-- 4: Filename and parent dir, with tilde as the home directory
-
-					shorting_target = 40, -- Shortens path to leave 40 spaces in the window
-					-- for other components. (terrible name, any suggestions?)
-					symbols = {
-						modified = "[+]", -- Text to show when the file is modified.
-						readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
-						unnamed = "[No Name]", -- Text to show for unnamed buffers.
-						newfile = "[New]", -- Text to show for newly created file before first write
-					},
+					file_status = true,
+					path = 1, -- Relative path
+					symbols = { modified = " ●", readonly = " 󰌾", unnamed = "[No Name]", newfile = " 󰝒" },
 				},
-				{ "macro_recording", "%S" },
+				{
+					"macro_recording",
+					fmt = function(res)
+						return res ~= "" and "󰑋 " .. res or ""
+					end,
+				},
 			},
 			lualine_x = {
-				-- 	Snacks.profiler.status(),
-				-- 	"searchcount",
-				-- 	selectioncount,
-				"filetype",
+				{
+					"diagnostics",
+					sources = { "nvim_diagnostic" },
+					symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " },
+				},
+				{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
 			},
-			lualine_y = { { "progress", separator = { left = "" } } },
+			lualine_y = {
+				{
+					function()
+						local msg = "No Active LSP"
+						local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+						local clients = vim.lsp.get_clients({ bufnr = 0 })
+						if next(clients) == nil then
+							return msg
+						end
+						for _, client in ipairs(clients) do
+							local filetypes = client.config.filetypes
+							if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+								return client.name
+							end
+						end
+						return msg
+					end,
+					icon = "󰄭 LSP:",
+				},
+			},
 			lualine_z = {
-				{ "location", separator = { left = "", right = "" } },
-				-- { "os.date('%a %b %d %I:%M %p')", separator = { right = "" }, left_padding = 2 },
+				{ "location", separator = { right = "" }, left_padding = 2 },
 			},
 		},
 	},

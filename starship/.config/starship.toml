@@ -2,11 +2,11 @@
 # format = '$all$directory$character'
 add_newline = true
 
-format = """$directory$character"""
+format = """$read_only$directory$character"""
 
 right_format = "$hostname$git_branch$time"
 
 [character]
-success_symbol = '[➜](bold green)'
+success_symbol = '[➜ ](bold green)'
 
 [gcloud]

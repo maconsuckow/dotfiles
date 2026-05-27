@@ -21,7 +21,9 @@ return {
 			"pglogical",
 			"information_schema",
 		}
-		vim.g.db_ui_use_postgres_views = 0
+    vim.g.db_ui_use_postgres_views = 1 -- Show Postgres views & materialized views
+    vim.g.db_ui_show_help = 0          -- Optional: hide help text to save space
+    vim.g.db_ui_win_width = 40         -- Optional: set custom sidebar width
 	end,
 	keys = {
 		{ "<leader>dd", "<cmd>DBUIToggle<cr>", desc = "Dadbod UI Toggle" },

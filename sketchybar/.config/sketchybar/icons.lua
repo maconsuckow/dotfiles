@@ -47,15 +47,15 @@ return {
 	wifi = {
 		upload = "􀄨",
 		download = "􀄩",
-		connected = "􀙇",
-		disconnected = "􀙈",
+		connected = "􀙇 ",
+		disconnected = "􀙈 ",
 		router = "􁓤",
 	},
 	bluetooth = {
 		main = "󰂯",
 	},
 	ethernet = {
-		connected = "󰇄",
+		connected = "󰇄 ",
 	},
 	media = {
 		back = "􀊊",

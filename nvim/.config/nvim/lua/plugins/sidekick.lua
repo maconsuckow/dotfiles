@@ -3,6 +3,11 @@ return {
 	event = "VeryLazy",
 	enabled = true,
 	opts = {
+		nes = {
+			diff = {
+				show = "cursor",
+			},
+		},
 		cli = {
 			mux = { enabled = false },
 			win = {
@@ -13,12 +18,8 @@ return {
 				gemini = {
 					cmd = { "gemini" },
 				},
-				-- OpenCode is now configured via ~/.config/opencode/opencode.json
-				opencode = {
-					cmd = { "opencode", "--model", "ollama/qwen2.5-coder:14b" },
-					env = {
-						OPENCODE_THEME = "system",
-					},
+				cursor = {
+					cmd = { "agent" },
 				},
 			},
 		},
@@ -102,9 +103,9 @@ return {
 		{
 			"<leader>ac",
 			function()
-				require("sidekick.cli").toggle({ name = "opencode", focus = true })
+				require("sidekick.cli").toggle({ name = "cursor", focus = true })
 			end,
-			desc = "Sidekick Toggle OpenCode",
+			desc = "Sidekick Toggle Cursor",
 		},
 	},
 }

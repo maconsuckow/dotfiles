@@ -42,7 +42,8 @@ return {
 	},
 	keys = {
 		{ "<leader>of", "<cmd>Obsidian follow_link vsplit<CR>", "[O]bsidian [F]ollow Link" },
-		{ "<leader>ot", "<cmd>Obsidian template<CR>", "[O]bsidian Insert [T]emplate" },
+		{ "<leader>oi", "<cmd>Obsidian template<CR>", "[O]bsidian [I]nsert Template" },
+		{ "<leader>ot", "<cmd>Obsidian today<CR>", "[O]bsidian [t]oday" },
 		{ "<leader>oc", "<cmd>Obsidian template<CR>", "[O]bsidian Template [C]heckbox" },
 	},
 }
