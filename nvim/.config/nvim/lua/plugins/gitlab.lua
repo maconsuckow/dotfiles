@@ -9,7 +9,7 @@ return {
 	},
 	enabled = true,
 	build = function()
-		require("gitlab").build()
+		require("gitlab.server").build(true)
 	end,
 	config = function()
 		require("gitlab").setup({

@@ -55,7 +55,7 @@ return {
 			default = { "lsp", "path", "snippets", "buffer" },
 			per_filetype = {
 				sql = { "lsp", "path", "snippets", "buffer", "dadbod" },
-				markdown = { "obsidian", "obsidian_new", "obsidian_tags", "lsp", "path", "snippets", "buffer" },
+				markdown = { "lsp", "path", "snippets", "buffer" },
 			},
 			providers = {
 				lsp = {

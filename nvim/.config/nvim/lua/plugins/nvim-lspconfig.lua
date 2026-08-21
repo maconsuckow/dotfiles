@@ -50,6 +50,7 @@ return {
 						preferences = {
 							importModuleSpecifier = "relative",
 							importModuleSpecifierEnding = "minimal",
+							autoImportFileExcludePatterns = { "**/index.ts", "**/index.tsx" },
 						},
 					},
 					typescript = {
@@ -64,6 +65,7 @@ return {
 						preferences = {
 							importModuleSpecifier = "relative",
 							importModuleSpecifierEnding = "minimal",
+							autoImportFileExcludePatterns = { "**/index.ts", "**/index.tsx" },
 						},
 					},
 				},

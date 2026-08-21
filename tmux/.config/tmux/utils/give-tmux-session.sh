@@ -34,7 +34,6 @@ case "$session_type" in
         tmux new-session -d -s "$session_name" -n "nvim" -c "$HOME/.config"
         tmux send-keys -t "$session_name:1" "nvim" C-m
         tmux new-window -t "$session_name" -n "gemini"
-        tmux send-keys -t "$session_name:2" "gemini" C-m
         ;;
     "obsidian")
         # Obsidian Session
@@ -43,7 +42,6 @@ case "$session_type" in
         tmux new-session -d -s "$session_name" -n "notes" -c "$vault_path"
         tmux send-keys -t "$session_name:1" "nvim" C-m
         tmux new-window -t "$session_name" -n "gemini"
-        tmux send-keys -t "$session_name:2" "gemini" C-m
         ;;
     "give")
         repo_path="$HOME/development/giveinteractive/"
@@ -70,7 +68,6 @@ case "$session_type" in
         
         # Window 5: Gemini
         tmux new-window -t "$session_name" -n "gemini" -c "$repo_path"
-        tmux send-keys -t "$session_name:5" "gemini" C-m
         ;;
     *)
         # Standard Project Session
@@ -98,7 +95,6 @@ case "$session_type" in
         
         # Window 5: Gemini
         tmux new-window -t "$session_name" -n "gemini" -c "$root_path"
-        tmux send-keys -t "$session_name:5" "gemini" C-m
         ;;
 esac
 

@@ -17,14 +17,9 @@ return {
 
 		daily_notes = {
 			folder = "Daily Notes",
-			date_format = "%Y/%m/%Y-%m-%d",
+			date_format = "%Y-%m-%d",
 			workdays_only = false,
 			template = "Templates/Daily Note",
-		},
-
-		completion = {
-			nvim_cmp = false, -- Changed to false to prevent the secondary menu
-			min_chars = 2,
 		},
 
 		frontmatter = {
@@ -38,6 +33,10 @@ return {
 			-- 	end
 			-- 	return out
 			-- end,
+		},
+		completion = {
+			blink = true,
+			min_chars = 2,
 		},
 	},
 	keys = {

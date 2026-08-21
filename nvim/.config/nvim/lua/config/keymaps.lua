@@ -51,5 +51,23 @@ vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "LSP: [R]e[n]ame"
 vim.keymap.set("n", "<leader>cc", vim.lsp.codelens.run, { desc = "LSP: [C]odelens Run" })
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 vim.keymap.set("n", "<leader>co", function()
+	local bufnr = vim.api.nvim_get_current_buf()
+	local file = vim.api.nvim_buf_get_name(bufnr)
+	local vtsls = vim.lsp.get_clients({ bufnr = bufnr, name = "vtsls" })[1]
+
+	if vtsls then
+		vtsls:request("workspace/executeCommand", {
+			command = "typescript.organizeImports",
+			arguments = { file },
+		}, function(err)
+			if err then
+				vim.notify("Organize imports failed: " .. err.message, vim.log.levels.WARN)
+			end
+		end, bufnr)
+		return
+	end
+
 	vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
 end, { desc = "LSP: Organize Imports" })
+vim.keymap.set("n", "zz", "<cmd>w<CR>", { desc = "Save" })
+vim.keymap.set("n", "ZZ", "<cmd>wq<CR>", { desc = "Save And Quit" })

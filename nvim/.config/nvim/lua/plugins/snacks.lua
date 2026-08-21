@@ -251,8 +251,14 @@ return {
 		},
 		indent = { enabled = false },
 		input = { enabled = true },
+		lazygit = {
+			win = {
+				border = "rounded",
+			},
+		},
 		picker = {
 			enabled = true,
+			ui_select = true,
 			sources = {
 				explorer = {
 					hidden = true,

@@ -214,7 +214,7 @@ return {
 					type = "pwa-node",
 					request = "attach",
 					name = "Attach to process",
-					processId = require("dap.utils").pick_process, -- This uses a built-in DAP utility to pick a process
+					processId = require("dap.utils").pick_process, -- Routes process selection through Snacks picker
 					cwd = "${workspaceFolder}",
 					sourceMaps = true,
 					resolveSourceMapLocations = {

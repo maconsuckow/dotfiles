@@ -1,0 +1,7 @@
+issueTabs:
+  - name: Current
+    jql: "project = {{.ProjectKey}} and assignee = currentUser() and status != Done and status != Canceled ORDER BY status DESC"
+  - name: Assigned
+    jql: project = {{.ProjectKey}} AND assignee=currentUser() AND statusCategory != Done ORDER BY priority DESC, updated DESC
+  - name: All
+    jql: project = {{.ProjectKey}} AND statusCategory != Done ORDER BY updated DESC

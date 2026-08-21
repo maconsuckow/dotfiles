@@ -15,11 +15,14 @@ return {
 				size = 80,
 			},
 			tools = {
-				gemini = {
-					cmd = { "gemini" },
+				antigravity = {
+					cmd = { "agy" },
 				},
 				cursor = {
 					cmd = { "agent" },
+				},
+				claude = {
+					cmd = { "claude" },
 				},
 			},
 		},
@@ -106,6 +109,13 @@ return {
 				require("sidekick.cli").toggle({ name = "cursor", focus = true })
 			end,
 			desc = "Sidekick Toggle Cursor",
+		},
+		{
+			"<leader>al",
+			function()
+				require("sidekick.cli").toggle({ name = "claude", focus = true })
+			end,
+			desc = "Sidekick Toggle Claude",
 		},
 	},
 }
