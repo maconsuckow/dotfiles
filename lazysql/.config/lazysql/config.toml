@@ -1,0 +1,70 @@
+ConfigFile = '/Users/maconsuckow/.config/lazysql/config.toml'
+LocalConfigFile = ''
+
+[application]
+DefaultPageSize = 300
+DisableSidebar = false
+SidebarOverlay = false
+MaxQueryHistoryPerConnection = 100
+TreeWidth = 30
+JSONViewerWordWrap = false
+EnterOpensJSONViewer = false
+ConfirmOnQuit = true
+max_open_connections = 8
+max_idle_connections = 8
+exact_count_threshold = 50000
+exact_count_timeout_ms = 200
+max_query_rows = 1000
+schema_bulk_load_threshold = 200
+
+[[database]]
+Name = 'Local'
+URL = 'postgresql://user:pass@localhost:5432/giveinteractive'
+Provider = 'postgres'
+DBName = 'giveinteractive'
+
+[[database]]
+Name = 'Grant Programs Local'
+URL = 'postgresql://user:pass@localhost:6543/postgres'
+Provider = 'postgres'
+DBName = 'postgres'
+
+[[database]]
+Name = 'Golden Disk Local'
+URL = 'postgresql://user:pass@localhost:5432/golden_disk'
+Provider = 'postgres'
+DBName = 'golden_disk'
+
+[[database]]
+Name = 'Dev'
+URL = 'postgresql://postgres:553Wi72VVjow4guk@10.113.18.4/signatry_dev'
+Provider = 'postgres'
+DBName = 'signatry_dev'
+
+[[database]]
+Name = 'QA_00'
+URL = 'postgresql://give:QWfjRYlG2kzw34ou@10.113.18.209/qa_00'
+Provider = 'postgres'
+DBName = 'qa_00'
+
+[[database]]
+Name = 'QA_01'
+URL = 'postgresql://give:maregdMY4JLpuikB@10.113.18.208/qa_01'
+Provider = 'postgres'
+DBName = 'qa_01'
+
+[[database]]
+Name = 'QA_02'
+URL = 'postgresql://give:h9sqwCzMe2za3qtQ@10.113.18.207/qa_02'
+Provider = 'postgres'
+DBName = 'qa_02'
+
+[[database]]
+Name = 'Reverse Rebook'
+URL = 'postgresql://postgres:553Wi72VVjow4guk@10.128.0.115/test?sslmode=disable'
+Provider = 'postgres'
+DBName = 'test'
+
+
+[theme]
+Preset = 'default'

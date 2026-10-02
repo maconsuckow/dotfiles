@@ -57,7 +57,5 @@ return {
 				}
 			end,
 		})
-
-		-- vim.cmd("colorscheme kanagawa-dragon")
 	end,
 }

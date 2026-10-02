@@ -42,4 +42,14 @@ require("lazy").setup({
 	},
 })
 
+-- Apply the persisted colorscheme (falling back to a default), now that all
+-- colorscheme plugins have loaded (they're all `lazy = false`).
+local theme_select = require("theme-select")
+local saved_theme = theme_select.get_saved_theme()
+local applied = pcall(vim.cmd.colorscheme, saved_theme or "gruvbox-material")
+if not applied then
+	vim.cmd.colorscheme("gruvbox-material")
+end
+theme_select.apply_overrides()
+
 require("config.keymaps")

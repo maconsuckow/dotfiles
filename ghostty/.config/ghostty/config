@@ -1,5 +1,6 @@
 # theme = kanso
 theme = Gruvbox Material Dark
+macos-icon = glass
 
 # background = #1f1d2e
 # background-opacity = 0.85
@@ -21,8 +22,8 @@ window-padding-y = 5
 window-padding-balance = true
 
 # font-family = "JetBrainsMono Nerd Font Mono"
-font-family = "Iosevka"
-font-style = "Extended"
+font-family = "Iosevka Nerd Font"
+# font-style = "Extended"  # not available in the Nerd Font build
 font-size = 14
 font-feature = "calt"
 font-feature = "liga"

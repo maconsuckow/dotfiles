@@ -1,0 +1,54 @@
+[
+  {
+    "QueryText": "-- select app_user_id from user_profile where first_name = 'Macon';\n\n-- update app_user set sub = 'cc379429-c77b-4e3d-866a-3249a285cd87' where id = (select app_user_id from user_profile where first_name = 'Macon');\n\nSELECT \n  up.id as up_id,\n  up.first_name,\n  up.last_name,\n  au.id AS au_id,\n  au.sub\nFROM user_profile up \nLEFT JOIN app_user au ON au.id = up.app_user_id \nWHERE first_name = 'Macon';\n\n-- SELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87'\n\n",
+    "Timestamp": "2026-10-02T13:27:10.258574Z"
+  },
+  {
+    "QueryText": "select app_user_id from user_profile where first_name = 'Macon';\n\n-- update app_user set sub = 'cc379429-c77b-4e3d-866a-3249a285cd87' where id = (select app_user_id from user_profile where first_name = 'Macon');\n\nSELECT \n  up.id as up_id,\n  up.first_name,\n  up.last_name,\n  au.id AS au_id,\n  au.sub\nFROM user_profile up \nLEFT JOIN app_user au ON au.id = up.app_user_id \nWHERE first_name = 'Macon';\n\n-- SELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87'\n\n",
+    "Timestamp": "2026-10-02T13:25:07.969416Z"
+  },
+  {
+    "QueryText": "-- select app_user_id from user_profile where first_name = 'Macon';\n\n-- update app_user set sub = 'cc379429-c77b-4e3d-866a-3249a285cd87' where id = (select app_user_id from user_profile where first_name = 'Macon');\n\nSELECT \n  up.id as up_id,\n  up.first_name,\n  up.last_name,\n  au.id AS au_id,\n  au.sub\nFROM user_profile up \nLEFT JOIN app_user au ON au.id = up.app_user_id \nWHERE first_name = 'Macon';\n\n-- SELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87'\n\n",
+    "Timestamp": "2026-10-02T13:24:57.780672Z"
+  },
+  {
+    "QueryText": "-- select app_user_id from user_profile where first_name = 'Macon';\n\n-- update app_user set sub = 'cc379429-c77b-4e3d-866a-3249a285cd87' where id = (select app_user_id from user_profile where first_name = 'Macon');\n\nSELECT \n  up.id as up_id,\n  up.first_name,\n  up.last_name,\n  au.sub\nFROM user_profile up \nLEFT JOIN app_user au ON au.id = up.app_user_id \nWHERE first_name = 'Macon';\n\n-- SELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87'\n\n",
+    "Timestamp": "2026-10-02T13:24:38.030137Z"
+  },
+  {
+    "QueryText": "select app_user_id from user_profile where first_name = 'Macon';\n\nupdate app_user set sub = 'cc379429-c77b-4e3d-866a-3249a285cd87' where id = (select app_user_id from user_profile where first_name = 'Macon');\n\nSELECT \n  up.id as up_id,\n  up.first_name,\n  up.last_name,\n  au.sub\nFROM user_profile up \nLEFT JOIN app_user au ON au.id = up.app_user_id \nWHERE first_name = 'Macon';\n\n-- SELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87'\n\n",
+    "Timestamp": "2026-10-02T13:21:28.899277Z"
+  },
+  {
+    "QueryText": "update app_user set sub = 'cc379429-c77b-4e3d-866a-3249a285cd87' where id = (select app_user_id from user_profile where first_name = 'Macon');\n\nSELECT \n  up.id as up_id,\n  up.first_name,\n  up.last_name,\n  au.sub\nFROM user_profile up \nLEFT JOIN app_user au ON au.id = up.app_user_id \nWHERE first_name = 'Macon';\n\n-- SELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87'\n\n",
+    "Timestamp": "2026-10-02T13:20:42.791448Z"
+  },
+  {
+    "QueryText": "update table app_user set sub = 'cc379429-c77b-4e3d-866a-3249a285cd87' where id = (select app_user_id from user_profile where first_name = 'Macon');\n\nSELECT \n  up.id as up_id,\n  up.first_name,\n  up.last_name,\n  au.sub\nFROM user_profile up \nLEFT JOIN app_user au ON au.id = up.app_user_id \nWHERE first_name = 'Macon';\n\n-- SELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87'\n\n",
+    "Timestamp": "2026-10-02T13:20:18.269332Z"
+  },
+  {
+    "QueryText": "SELECT up.*, au.* FROM user_profile up LEFT JOIN app_user au ON au.id = up.app_user_id WHERE first_name = 'Macon';\n\n-- SELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87'\n",
+    "Timestamp": "2026-10-01T21:46:50.235861Z"
+  },
+  {
+    "QueryText": "SELECT up.id, up.first_name, up.last_name, au.id, au.sub FROM user_profile up LEFT JOIN app_user au ON au.id = up.app_user_id WHERE first_name = 'Macon';\n\n-- SELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87'\n",
+    "Timestamp": "2026-10-01T21:46:21.289527Z"
+  },
+  {
+    "QueryText": "-- SELECT up.id, up.first_name, up.last_name, au.id, au.sub FROM user_profile up LEFT JOIN app_user au ON au.id = up.app_user_id WHERE first_name = 'Macon';\n\nSELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87';\n",
+    "Timestamp": "2026-10-01T21:45:44.936741Z"
+  },
+  {
+    "QueryText": "SELECT up.id, up.first_name, up.last_name, au.id, au.sub FROM user_profile up LEFT JOIN app_user au ON au.id = up.app_user_id WHERE first_name = 'Macon';\n\nSELECT * FROM app_user WHERE sub = 'cc379429-c77b-4e3d-866a-3249a285cd87';\n",
+    "Timestamp": "2026-10-01T21:45:33.697856Z"
+  },
+  {
+    "QueryText": "SELECT up.id, up.first_name, up.last_name, au.id, au.sub FROM user_profile up LEFT JOIN app_user au ON au.id = up.app_user_id WHERE first_name = 'Macon';",
+    "Timestamp": "2026-10-01T21:35:34.354471Z"
+  },
+  {
+    "QueryText": "SELECT * FROM user_profile WHERE first_name = 'Macon';",
+    "Timestamp": "2026-10-01T21:13:34.616431Z"
+  }
+]

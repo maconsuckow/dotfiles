@@ -20,11 +20,23 @@ end, { desc = "Previous [W]arning" })
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Horizontal Split" })
 vim.keymap.set("n", "<leader>_", "<C-W>s", { desc = "Vertical Split" })
 
+vim.keymap.set("n", "]b", "<cmd>bnext<CR>", { desc = "Next Buffer" })
+vim.keymap.set("n", "[b", "<cmd>bprevious<CR>", { desc = "Previous Buffer" })
+
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase Window Height" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease Window Height" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease Window Width" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase Window Width" })
+
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode", remap = true })
 
 vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open Lazy" })
+
+vim.keymap.set("n", "<leader>uc", function()
+	require("theme-select").open()
+end, { desc = "Colorscheme Picker" })
 
 vim.keymap.set("n", "<leader>cp", function()
 	local path = vim.fn.expand("%:.")

@@ -1,0 +1,18 @@
+[
+  {
+    "QueryText": "SELECT \n  up.id as up_id,\n  up.first_name,\n  up.last_name,\n  au.sub\nFROM user_profile up \nleft join app_user au on au.id = up.app_user_id\nWHERE up.first_name = 'Macon';\n",
+    "Timestamp": "2026-10-02T13:15:46.166131Z"
+  },
+  {
+    "QueryText": "SELECT * FROM user_profile up WHERE up.first_name = 'Macon';",
+    "Timestamp": "2026-10-02T13:14:17.722746Z"
+  },
+  {
+    "QueryText": "SELECT * FROM fund_transaction WHERE enabled = true;\n",
+    "Timestamp": "2026-10-01T21:01:17.461362Z"
+  },
+  {
+    "QueryText": "SELECT * FROM fund_transaction WHERE enable = true;\n",
+    "Timestamp": "2026-10-01T21:01:07.29029Z"
+  }
+]
