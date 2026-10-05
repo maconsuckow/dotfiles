@@ -81,5 +81,5 @@ vim.keymap.set("n", "<leader>co", function()
 
 	vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
 end, { desc = "LSP: Organize Imports" })
-vim.keymap.set("n", "zz", "<cmd>w<CR>", { desc = "Save" })
+vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save" })
 vim.keymap.set("n", "ZZ", "<cmd>wq<CR>", { desc = "Save And Quit" })

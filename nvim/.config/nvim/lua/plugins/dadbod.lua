@@ -24,6 +24,12 @@ return {
     vim.g.db_ui_use_postgres_views = 1 -- Show Postgres views & materialized views
     vim.g.db_ui_show_help = 0          -- Optional: hide help text to save space
     vim.g.db_ui_win_width = 40         -- Optional: set custom sidebar width
+
+		-- Connections live in lua/local/dbs.lua (gitignored, contains credentials)
+		local ok, dbs = pcall(require, "local.dbs")
+		if ok then
+			vim.g.dbs = dbs
+		end
 	end,
 	keys = {
 		{ "<leader>dd", "<cmd>DBUIToggle<cr>", desc = "Dadbod UI Toggle" },

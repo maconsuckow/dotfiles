@@ -5,6 +5,8 @@ return {
 	ft = "markdown",
 	opts = {
 		legacy_commands = false,
+		-- render-markdown.nvim handles rendering
+		ui = { enable = false },
 		workspaces = {
 			{
 				name = "personal",
@@ -33,10 +35,6 @@ return {
 			-- 	end
 			-- 	return out
 			-- end,
-		},
-		completion = {
-			blink = true,
-			min_chars = 2,
 		},
 	},
 	keys = {

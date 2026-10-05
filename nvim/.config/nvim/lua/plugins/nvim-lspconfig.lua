@@ -41,6 +41,22 @@ return {
 			marksman = {},
 			biome = {},
 			lua_ls = {},
+			typos_lsp = {},
+			-- Non-empty settings: an empty table is sent as a JSON array, which harper rejects
+			harper_ls = {
+				settings = {
+					["harper-ls"] = { diagnosticSeverity = "hint" },
+				},
+			},
+			-- Run on any SQL buffer (DBUI queries live outside projects) using one global config
+			postgres_lsp = {
+				cmd = {
+					"postgres-language-server",
+					"lsp-proxy",
+					"--config-path=" .. vim.fn.stdpath("config") .. "/postgres-language-server.jsonc",
+				},
+				workspace_required = false,
+			},
 			vtsls = {
 				settings = {
 					vtsls = {
@@ -72,18 +88,17 @@ return {
 			},
 		}
 
-		local ensure_installed = vim.tbl_keys(servers or {})
+		-- mason-lspconfig v2 ignores `handlers` and enables servers via vim.lsp.enable(),
+		-- so per-server settings must be registered with vim.lsp.config() first
+		vim.lsp.config("*", { capabilities = capabilities })
+		for server_name, server in pairs(servers) do
+			if next(server) then
+				vim.lsp.config(server_name, server)
+			end
+		end
 
 		require("mason-lspconfig").setup({
-			ensure_installed = vim.tbl_deep_extend("force", ensure_installed, {}),
-			automatic_installation = false,
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
-			},
+			ensure_installed = vim.tbl_keys(servers),
 		})
 	end,
 }

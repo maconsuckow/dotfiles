@@ -13,6 +13,7 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
+			sql = { "sql_formatter" },
 			-- python = { "isort", "black" },
 			-- rust = { "rustfmt" },
 			-- javascript = { "prettierd", "prettier", "biome", "biome-organize-imports" },
@@ -29,6 +30,11 @@ return {
 			-- javascriptreact = { "prettierd", "prettier" },
 			-- typescript = { "prettierd", "prettier" },
 			-- typescriptreact = { "prettierd", "prettier" },
+		},
+		formatters = {
+			sql_formatter = {
+				prepend_args = { "--language", "postgresql" },
+			},
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()

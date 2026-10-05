@@ -3,3 +3,4 @@
 
 tmux/.config/tmux/plugins/*
 nvim/.config/nvim/spell/*
+nvim/.config/nvim/lua/local/*

@@ -2,10 +2,9 @@ return {
 	"saghen/blink.cmp",
 	dependencies = {
 		"rafamadriz/friendly-snippets",
-		"saghen/blink.compat",
-		"hrsh7th/nvim-cmp",
 	},
 	version = "1.*",
+	event = { "InsertEnter", "CmdlineEnter" },
 	opts = {
 		keymap = {
 			preset = "default",
@@ -67,6 +66,7 @@ return {
 				dadbod = {
 					name = "Dadbod",
 					module = "vim_dadbod_completion.blink",
+					score_offset = 100,
 				},
 			},
 		},

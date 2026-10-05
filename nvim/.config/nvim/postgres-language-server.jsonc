@@ -1,0 +1,13 @@
+// Global config for postgres_lsp (passed via --config-path in nvim-lspconfig.lua).
+// No DB connection: dadbod handles live schema; this gives syntax + lint only.
+{
+  "$schema": "https://pg-language-server.com/0.26.0/schema.json",
+  "linter": {
+    "enabled": true,
+    "rules": { "recommended": true }
+  },
+  "typecheck": { "enabled": false },
+  "plpgsqlCheck": { "enabled": false },
+  "splinter": { "enabled": false },
+  "db": { "disableConnection": true }
+}
