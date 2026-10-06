@@ -81,7 +81,8 @@ return {
 			desc = "LSP: [G]oto [D]eclarations",
 		},
 		{
-			"gr",
+			-- grr (not gr) so it doesn't wait on Neovim's built-in grn/gra/gri maps
+			"grr",
 			function()
 				Snacks.picker.lsp_references()
 			end,

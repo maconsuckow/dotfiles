@@ -82,4 +82,8 @@ vim.keymap.set("n", "<leader>co", function()
 	vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
 end, { desc = "LSP: Organize Imports" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save" })
+
+-- Built-in undo tree (Neovim 0.12+)
+vim.cmd.packadd("nvim.undotree")
+vim.keymap.set("n", "<leader>uu", "<cmd>Undotree<CR>", { desc = "Toggle Undotree" })
 vim.keymap.set("n", "ZZ", "<cmd>wq<CR>", { desc = "Save And Quit" })

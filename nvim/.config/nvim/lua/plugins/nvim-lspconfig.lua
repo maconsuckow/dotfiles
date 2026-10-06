@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"mason.nvim",
 		{ "williamboman/mason-lspconfig.nvim", config = function() end },
+		{ "b0o/SchemaStore.nvim", lazy = true, version = false },
 	},
 	config = function()
 		vim.diagnostic.config({
@@ -57,6 +58,51 @@ return {
 				},
 				workspace_required = false,
 			},
+			-- Biome formats JSON; jsonls only validates/completes against SchemaStore
+			jsonls = {
+				init_options = { provideFormatter = false },
+				settings = {
+					json = {
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
+					},
+				},
+			},
+			yamlls = {
+				settings = {
+					yaml = {
+						-- Use SchemaStore.nvim's catalog instead of yamlls' built-in download
+						schemaStore = { enable = false, url = "" },
+						schemas = require("schemastore").yaml.schemas(),
+						-- GitLab CI `!reference [job, script]` tags
+						customTags = { "!reference sequence" },
+						format = { enable = false },
+					},
+				},
+			},
+			-- Only start in projects that depend on tailwindcss (the default falls back to any .git root)
+			tailwindcss = {
+				root_dir = function(bufnr, on_dir)
+					local root = vim.fs.root(bufnr, function(name, path)
+						if name:match("^tailwind%.config%.") then
+							return true
+						end
+						if name ~= "package.json" then
+							return false
+						end
+						local file = io.open(vim.fs.joinpath(path, name))
+						if not file then
+							return false
+						end
+						local content = file:read("*a")
+						file:close()
+						return content:find('"tailwindcss"', 1, true) ~= nil
+					end)
+					if root then
+						on_dir(root)
+					end
+				end,
+			},
 			vtsls = {
 				settings = {
 					vtsls = {
@@ -96,6 +142,19 @@ return {
 				vim.lsp.config(server_name, server)
 			end
 		end
+
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("lsp_inlay_hints", { clear = true }),
+			callback = function(args)
+				local client = vim.lsp.get_client_by_id(args.data.client_id)
+				if client and client:supports_method("textDocument/inlayHint") then
+					vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+				end
+			end,
+		})
+		vim.keymap.set("n", "<leader>uh", function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+		end, { desc = "Toggle Inlay Hints" })
 
 		require("mason-lspconfig").setup({
 			ensure_installed = vim.tbl_keys(servers),
