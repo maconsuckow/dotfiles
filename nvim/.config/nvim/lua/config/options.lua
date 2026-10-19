@@ -71,8 +71,6 @@ vim.opt.foldcolumn = "0"
 vim.opt.foldlevel = 99
 -- vim.opt.foldlevelstart = 1
 
-vim.opt.clipboard = "unnamedplus"
-
 vim.opt.wrap = false
 
 vim.opt.conceallevel = 1
@@ -87,3 +85,32 @@ vim.opt.termguicolors = true
 
 vim.o.cursorline = true
 
+
+local swap_group = vim.api.nvim_create_augroup("swapfile_handling", { clear = true })
+
+-- Obsidian vault: no swap files (the Obsidian app edits these notes too, and
+-- killed sessions left hundreds of stale swaps that triggered E325 prompts)
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+	group = swap_group,
+	pattern = vim.fn.expand("~/Documents/Personal") .. "/*",
+	callback = function()
+		vim.opt_local.swapfile = false
+	end,
+})
+
+-- Silently delete stale swap files: owner process gone and no unsaved changes.
+-- Swaps with unsaved changes still prompt so they can be recovered.
+vim.api.nvim_create_autocmd("SwapExists", {
+	group = swap_group,
+	callback = function()
+		-- No hostname check: the swap dir is local, and this Mac's hostname changes per network
+		local info = vim.fn.swapinfo(vim.v.swapname)
+		if info.error then
+			return
+		end
+		local running = info.pid > 0 and vim.uv.kill(info.pid, 0) == 0
+		if not running and info.dirty == 0 then
+			vim.v.swapchoice = "d"
+		end
+	end,
+})

@@ -1,21 +1,18 @@
 return {
 	"folke/noice.nvim",
 	opts = {
-		hover = {
-			enabled = false,
-		},
-		signatrue = {
-			enabled = false,
-		},
-		messages = {
-			enabled = false,
-		},
 		views = {
 			notify = {
 				replace = true,
 			},
 		},
 		lsp = {
+			hover = {
+				enabled = false,
+			},
+			signature = {
+				enabled = false,
+			},
 			progress = {
 				enabled = true,
 				format = "lsp_progress",
@@ -33,6 +30,14 @@ return {
 				filter = {
 					event = "msg_show",
 					kind = "search_count",
+				},
+				opts = { skip = true },
+			},
+			-- vim-dadbod echoes this on every query; with cmdheight=0 it caused a hit-enter prompt
+			{
+				filter = {
+					event = "msg_show",
+					find = "^DB: Running query",
 				},
 				opts = { skip = true },
 			},
