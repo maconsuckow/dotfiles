@@ -1,7 +1,6 @@
 return {
 	"webhooked/kanso.nvim",
-	lazy = false,
-	priority = 1000,
+	lazy = true,
 	config = function()
 		require("kanso").setup({
 			transparent = true,

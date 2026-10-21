@@ -13,9 +13,6 @@ return {
 		appearance = {
 			nerd_font_variant = "mono",
 			kind_icons = {
-				Keyword = " ",
-				Function = " ",
-				Variable = " ",
 				obsidian = "󱞶",
 				obsidian_new = "󱞶",
 				obsidian_tags = "󰓹",
@@ -48,6 +45,13 @@ return {
 			},
 			ghost_text = {
 				enabled = vim.g.ai_cmp,
+			},
+		},
+		signature = {
+			enabled = true,
+			window = {
+				border = "rounded",
+				winhighlight = "Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder",
 			},
 		},
 		sources = {

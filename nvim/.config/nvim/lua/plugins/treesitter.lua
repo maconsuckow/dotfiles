@@ -1,6 +1,11 @@
 local parsers = {
 	"bash",
 	"css",
+	"diff",
+	"dockerfile",
+	"gitcommit",
+	"gitignore",
+	"graphql",
 	"html",
 	"javascript",
 	"jsdoc",
@@ -30,11 +35,13 @@ return {
 		-- No-op for parsers that are already installed (requires tree-sitter-cli)
 		require("nvim-treesitter").install(parsers)
 
-		-- Highlighting is built into Neovim; start it for any filetype with a parser
+		-- Highlighting is built into Neovim; start it (and treesitter indent) for any filetype with a parser
 		vim.api.nvim_create_autocmd("FileType", {
 			group = vim.api.nvim_create_augroup("treesitter_start", { clear = true }),
 			callback = function(args)
-				pcall(vim.treesitter.start, args.buf)
+				if pcall(vim.treesitter.start, args.buf) then
+					vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
 			end,
 		})
 

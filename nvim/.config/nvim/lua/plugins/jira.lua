@@ -9,6 +9,7 @@ end
 
 return {
   "letieu/jira.nvim",
+  cmd = "Jira",
   opts = {
     -- Your setup options...
     jira = {

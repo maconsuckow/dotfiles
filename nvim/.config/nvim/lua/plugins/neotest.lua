@@ -3,7 +3,6 @@ return {
 	dependencies = {
 		"nvim-neotest/nvim-nio",
 		"nvim-lua/plenary.nvim",
-		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-neotest/neotest-jest",
 		"marilari88/neotest-vitest",
@@ -14,7 +13,7 @@ return {
 			env = { CI = true, NODE_ENV = "test" },
 			cwd = function(path)
 				local root = vim.fs.find({ "package.json" }, { path = path, upward = true })[1]
-				return root and vim.fs.dirname(root) or vim.loop.cwd()
+				return root and vim.fs.dirname(root) or vim.uv.cwd()
 			end,
 		})
 

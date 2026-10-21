@@ -1,5 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"yavorski/lualine-macro-recording.nvim",
@@ -49,19 +50,19 @@ return {
 			lualine_y = {
 				{
 					function()
-						local msg = "No Active LSP"
-						local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 						local clients = vim.lsp.get_clients({ bufnr = 0 })
-						if next(clients) == nil then
-							return msg
+						if #clients == 0 then
+							return "No Active LSP"
 						end
+						local spell_servers = { typos_lsp = true, harper_ls = true }
+						local primary, all = {}, {}
 						for _, client in ipairs(clients) do
-							local filetypes = client.config.filetypes
-							if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-								return client.name
+							table.insert(all, client.name)
+							if not spell_servers[client.name] then
+								table.insert(primary, client.name)
 							end
 						end
-						return msg
+						return table.concat(#primary > 0 and primary or all, ", ")
 					end,
 					icon = "󰄭 LSP:",
 				},

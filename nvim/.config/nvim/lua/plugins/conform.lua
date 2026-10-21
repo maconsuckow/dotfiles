@@ -1,5 +1,7 @@
 return {
 	"stevearc/conform.nvim",
+	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
 	keys = {
 		{
 			"<leader>fc",
@@ -13,23 +15,17 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
+			sh = { "shfmt" },
+			bash = { "shfmt" },
 			sql = { "sql_formatter" },
-			-- python = { "isort", "black" },
-			-- rust = { "rustfmt" },
-			-- javascript = { "prettierd", "prettier", "biome", "biome-organize-imports" },
-			-- javascriptreact = { "prettierd", "prettier", "biome", "biome-organize-imports" },
-			-- typescript = { "prettierd", "prettier", "biome", "biome-organize-imports" },
-			-- typescriptreact = { "prettierd", "prettier", "biome", "biome-organize-imports" },
+			json = { "biome" },
+			jsonc = { "biome" },
+			css = { "biome" },
 
 			javascript = { "biome", "biome-organize-imports" },
 			javascriptreact = { "biome", "biome-organize-imports" },
 			typescript = { "biome", "biome-organize-imports" },
 			typescriptreact = { "biome", "biome-organize-imports" },
-
-			-- javascript = { "prettierd", "prettier" },
-			-- javascriptreact = { "prettierd", "prettier" },
-			-- typescript = { "prettierd", "prettier" },
-			-- typescriptreact = { "prettierd", "prettier" },
 		},
 		formatters = {
 			sql_formatter = {

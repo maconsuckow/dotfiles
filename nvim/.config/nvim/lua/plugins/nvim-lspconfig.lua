@@ -3,7 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile", "BufWritePre" },
 	dependencies = {
 		"mason.nvim",
-		{ "williamboman/mason-lspconfig.nvim", config = function() end },
+		{ "mason-org/mason-lspconfig.nvim", config = function() end },
 		{ "b0o/SchemaStore.nvim", lazy = true, version = false },
 	},
 	config = function()
@@ -19,18 +19,9 @@ return {
 					[vim.diagnostic.severity.HINT] = "󰌶 ",
 				},
 			},
-			virtual_text = {
-				source = "if_many",
-				spacing = 2,
-				format = function(diagnostic)
-					local diagnostic_message = {
-						[vim.diagnostic.severity.ERROR] = diagnostic.message,
-						[vim.diagnostic.severity.WARN] = diagnostic.message,
-						[vim.diagnostic.severity.INFO] = diagnostic.message,
-						[vim.diagnostic.severity.HINT] = diagnostic.message,
-					}
-					return diagnostic_message[diagnostic.severity]
-				end,
+			virtual_text = false,
+			virtual_lines = {
+				current_line = true,
 			},
 		})
 
@@ -147,15 +138,17 @@ return {
 			group = vim.api.nvim_create_augroup("lsp_inlay_hints", { clear = true }),
 			callback = function(args)
 				local client = vim.lsp.get_client_by_id(args.data.client_id)
-				if client and client:supports_method("textDocument/inlayHint") then
+				if not client then
+					return
+				end
+				if client:supports_method("textDocument/inlayHint") then
 					vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+				end
+				if client:supports_method("textDocument/codeLens") then
+					vim.lsp.codelens.enable(true, { bufnr = args.buf })
 				end
 			end,
 		})
-		vim.keymap.set("n", "<leader>uh", function()
-			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
-		end, { desc = "Toggle Inlay Hints" })
-
 		require("mason-lspconfig").setup({
 			ensure_installed = vim.tbl_keys(servers),
 		})

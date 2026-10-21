@@ -1,6 +1,6 @@
 return {
 	"nvim-mini/mini.pairs",
-	enabled = true,
+	event = "VeryLazy",
 	opts = {
 		modes = { insert = true, command = true, terminal = false },
 		-- skip autopair when next character is one of these

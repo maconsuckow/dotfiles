@@ -19,42 +19,42 @@ return {
 	end,
 	keys = {
 		{
-			"<leader>glr",
+			"<leader>gmr",
 			function()
 				require("gitlab").choose_merge_request()
 			end,
 			desc = "GitLab [r]eview (List MRs)",
 		},
 		{
-			"<leader>glv",
+			"<leader>gmv",
 			function()
 				require("gitlab").review()
 			end,
 			desc = "GitLab [v]iew current branch review",
 		},
 		{
-			"<leader>gls",
+			"<leader>gms",
 			function()
 				require("gitlab").summary()
 			end,
 			desc = "GitLab [s]ummary",
 		},
 		{
-			"<leader>glA",
+			"<leader>gmA",
 			function()
 				require("gitlab").approve()
 			end,
 			desc = "GitLab [A]pprove",
 		},
 		{
-			"<leader>glR",
+			"<leader>gmR",
 			function()
 				require("gitlab").revoke()
 			end,
 			desc = "GitLab [R]evoke Approval",
 		},
 		{
-			"<leader>glc",
+			"<leader>gmc",
 			function()
 				require("gitlab").create_comment()
 			end,
@@ -62,21 +62,21 @@ return {
 			mode = { "n", "v" },
 		},
 		{
-			"<leader>gld",
+			"<leader>gmd",
 			function()
 				require("gitlab").toggle_discussions()
 			end,
 			desc = "GitLab toggle [d]iscussions",
 		},
 		{
-			"<leader>glO",
+			"<leader>gmO",
 			function()
 				require("gitlab").open_in_browser()
 			end,
 			desc = "GitLab [O]pen in browser",
 		},
 		{
-			"<leader>glp",
+			"<leader>gmp",
 			function()
 				require("gitlab").pipeline()
 			end,

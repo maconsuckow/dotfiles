@@ -9,8 +9,7 @@ return {
 		vim.g.gruvbox_material_background = "soft"
 		vim.g.gruvbox_material_transparent_background = 2
 
-		-- Colorscheme is applied centrally in config/lazy.lua via theme-select,
-		-- which also applies the transparency overrides (see apply_overrides()).
+		vim.cmd.colorscheme("gruvbox-material")
 	end,
 }
 

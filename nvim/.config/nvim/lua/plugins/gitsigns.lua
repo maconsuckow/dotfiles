@@ -35,6 +35,12 @@ return {
 				return "<Ignore>"
 			end, "Prev Hunk", { expr = true })
 
+			map("n", "<leader>hs", gs.stage_hunk, "Stage Hunk")
+			map("v", "<leader>hs", function()
+				gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+			end, "Stage Hunk (selection)")
+			map("n", "<leader>hS", gs.stage_buffer, "Stage Buffer")
+			map("n", "<leader>hu", gs.undo_stage_hunk, "Undo Stage Hunk")
 			map("n", "<leader>hp", gs.preview_hunk, "Preview Hunk")
 			map("n", "<leader>hr", gs.reset_hunk, "Reset Hunk")
 			map("v", "<leader>hr", function()
@@ -42,6 +48,7 @@ return {
 			end, "Reset Hunk (selection)")
 			map("n", "<leader>hR", gs.reset_buffer, "Reset Buffer")
 			map("n", "<leader>hb", gs.blame_line, "Blame Line")
+			map("n", "<leader>hd", gs.diffthis, "Diff This")
 		end,
 	},
 }

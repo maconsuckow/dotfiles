@@ -22,7 +22,7 @@ return {
 			function()
 				Snacks.picker.command_history()
 			end,
-			desc = "Command Hisotry",
+			desc = "Command History",
 		},
 		{
 			"<leader>e",
@@ -62,7 +62,7 @@ return {
 		{
 			"<leader>bo",
 			function()
-				Snacks.bufdelete()
+				Snacks.bufdelete.other()
 			end,
 			desc = "[B]uffer Delete [O]thers",
 		},
@@ -94,6 +94,13 @@ return {
 				Snacks.picker.lsp_implementations()
 			end,
 			desc = "LSP: [G]oto [I]mplementation",
+		},
+		{
+			"gy",
+			function()
+				Snacks.picker.lsp_type_definitions()
+			end,
+			desc = "LSP: [G]oto T[y]pe Definitions",
 		},
 		{
 			"<leader>z",
@@ -158,7 +165,7 @@ return {
 			end,
 			desc = "LazyGit",
 		},
-		-- Grep
+		-- Grep & Symbols
 		{
 			"<leader>sb",
 			function()
@@ -187,6 +194,20 @@ return {
 			end,
 			desc = "Visual selection or word",
 			mode = { "n", "x" },
+		},
+		{
+			"<leader>ss",
+			function()
+				Snacks.picker.lsp_symbols()
+			end,
+			desc = "LSP Symbols",
+		},
+		{
+			"<leader>sS",
+			function()
+				Snacks.picker.lsp_workspace_symbols()
+			end,
+			desc = "LSP Workspace Symbols",
 		},
 		{
 			"<leader>.",
@@ -224,7 +245,121 @@ return {
 			end,
 			desc = "which_key_ignore",
 		},
+		{
+			"<leader>uc",
+			function()
+				Snacks.picker.colorschemes()
+			end,
+			desc = "Colorschemes",
+		},
+		{
+			"<leader>fr",
+			function()
+				Snacks.picker.recent()
+			end,
+			desc = "Recent Files",
+		},
+		{
+			"<leader>fp",
+			function()
+				Snacks.picker.projects()
+			end,
+			desc = "Projects",
+		},
+		{
+			"<leader>sR",
+			function()
+				Snacks.picker.resume()
+			end,
+			desc = "Resume Last Picker",
+		},
+		{
+			"<leader>sh",
+			function()
+				Snacks.picker.help()
+			end,
+			desc = "Help Pages",
+		},
+		{
+			"<leader>sk",
+			function()
+				Snacks.picker.keymaps()
+			end,
+			desc = "Keymaps",
+		},
+		{
+			"<leader>sq",
+			function()
+				Snacks.picker.qflist()
+			end,
+			desc = "Quickfix List",
+		},
+		{
+			"<leader>su",
+			function()
+				Snacks.picker.undo()
+			end,
+			desc = "Undo History",
+		},
+		{
+			'<leader>s"',
+			function()
+				Snacks.picker.registers()
+			end,
+			desc = "Registers",
+		},
+		{
+			"<leader>si",
+			function()
+				Snacks.picker.icons()
+			end,
+			desc = "Icons",
+		},
+		{
+			"<leader>sm",
+			function()
+				Snacks.picker.man()
+			end,
+			desc = "Man Pages",
+		},
+		{
+			"z=",
+			function()
+				Snacks.picker.spelling()
+			end,
+			desc = "Spelling Suggestions",
+		},
+		{
+			"]]",
+			function()
+				Snacks.words.jump(vim.v.count1)
+			end,
+			desc = "Next Reference",
+			mode = { "n", "t" },
+		},
+		{
+			"[[",
+			function()
+				Snacks.words.jump(-vim.v.count1)
+			end,
+			desc = "Prev Reference",
+			mode = { "n", "t" },
+		},
 	},
+	init = function()
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "VeryLazy",
+			callback = function()
+				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+				Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+				Snacks.toggle.diagnostics():map("<leader>ud")
+				Snacks.toggle.inlay_hints():map("<leader>uh")
+				Snacks.toggle.line_number():map("<leader>ul")
+				Snacks.toggle.dim():map("<leader>uD")
+				Snacks.toggle.treesitter():map("<leader>uT")
+			end,
+		})
+	end,
 	opts = {
 		bigfile = { enabled = true },
 		dashboard = {
@@ -247,9 +382,8 @@ return {
 		},
 		explorer = {
 			enabled = true,
-			tree = false,
-			focus = "input",
 		},
+		image = { enabled = true },
 		indent = { enabled = false },
 		input = { enabled = true },
 		lazygit = {
@@ -300,7 +434,8 @@ return {
 			-- 	},
 			-- },
 		},
-		word = { enabled = false },
+		statuscolumn = { enabled = true },
+		words = { enabled = true },
 		zen = {
 			enabled = true,
 		},

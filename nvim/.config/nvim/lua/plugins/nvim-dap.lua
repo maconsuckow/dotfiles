@@ -6,7 +6,7 @@ return {
 	dependencies = {
 		{ "igorlfs/nvim-dap-view", opts = {} },
 		{
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 			opts = function(_, opts)
 				opts.ensure_installed = opts.ensure_installed or {}
 				table.insert(opts.ensure_installed, "js-debug-adapter")
@@ -38,7 +38,7 @@ return {
 		{
 			"<leader>da",
 			function()
-				require("utils/dap_picker").dap_configurations()
+				require("utils.dap_picker").dap_configurations()
 			end,
 			desc = "Run with Args",
 		},

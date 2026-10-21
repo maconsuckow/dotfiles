@@ -38,9 +38,9 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>of", "<cmd>Obsidian follow_link vsplit<CR>", "[O]bsidian [F]ollow Link" },
-		{ "<leader>oi", "<cmd>Obsidian template<CR>", "[O]bsidian [I]nsert Template" },
-		{ "<leader>ot", "<cmd>Obsidian today<CR>", "[O]bsidian [t]oday" },
-		{ "<leader>oc", "<cmd>Obsidian template<CR>", "[O]bsidian Template [C]heckbox" },
+		{ "<leader>of", "<cmd>Obsidian follow_link vsplit<CR>", desc = "[O]bsidian [F]ollow Link" },
+		{ "<leader>oi", "<cmd>Obsidian template<CR>", desc = "[O]bsidian [I]nsert Template" },
+		{ "<leader>ot", "<cmd>Obsidian today<CR>", desc = "[O]bsidian [T]oday" },
+		{ "<leader>oc", "<cmd>Obsidian toggle_checkbox<CR>", desc = "[O]bsidian Toggle [C]heckbox" },
 	},
 }
