@@ -65,6 +65,7 @@ case "$session_type" in
         
         # Window 4: DB
         tmux new-window -t "$session_name" -n "db" -c "$repo_path"
+        tmux send-keys -t "$session_name:db" "nvim +DBUI" C-m
         
         # Window 5: Gemini
         tmux new-window -t "$session_name" -n "gemini" -c "$repo_path"
@@ -92,6 +93,7 @@ case "$session_type" in
         
         # Window 4: DB
         tmux new-window -t "$session_name" -n "db" -c "$root_path"
+        tmux send-keys -t "$session_name:db" "nvim +DBUI" C-m
         
         # Window 5: Gemini
         tmux new-window -t "$session_name" -n "gemini" -c "$root_path"
