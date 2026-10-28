@@ -161,7 +161,26 @@ return {
 		{
 			"<leader>gg",
 			function()
-				Snacks.lazygit()
+				-- lazygit writes its final cwd here on quit; follow it so switching worktrees moves nvim too
+				local dir_file = vim.fn.tempname()
+				local term = Snacks.lazygit({ env = { LAZYGIT_NEW_DIR_FILE = dir_file } })
+				vim.api.nvim_create_autocmd("TermClose", {
+					buffer = term.buf,
+					once = true,
+					callback = function()
+						vim.schedule(function()
+							if vim.fn.filereadable(dir_file) == 0 then
+								return
+							end
+							local dir = vim.fn.readfile(dir_file)[1]
+							vim.fn.delete(dir_file)
+							if dir and dir ~= "" and dir ~= vim.fn.getcwd() then
+								vim.cmd.cd(vim.fn.fnameescape(dir))
+								vim.notify("cwd → " .. dir)
+							end
+						end)
+					end,
+				})
 			end,
 			desc = "LazyGit",
 		},
@@ -389,6 +408,13 @@ return {
 		lazygit = {
 			win = {
 				border = "rounded",
+			},
+			config = {
+				os = {
+					editPreset = "nvim-remote",
+					edit = '[ -z "$NVIM" ] && (nvim -- "{{filename}}") || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote "{{filename}}")',
+					editAtLine = '[ -z "$NVIM" ] && (nvim +{{line}} -- "{{filename}}") || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote "{{filename}}" && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")',
+				},
 			},
 		},
 		picker = {
